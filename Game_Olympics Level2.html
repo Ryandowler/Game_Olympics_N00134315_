@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Level 1: Pong</title>
+	<title>Level 2: Pong</title>
 
 	<!-- Basic styling, centering the canvas ryan doo nott forget put in external fileeeee -->
 	<style>
@@ -12,7 +12,7 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-		border: 1px solid black;
+		border: 1px solid green;
 		
 		
 	}
@@ -133,11 +133,10 @@ ball = {
 		
 		
 		
-		//if i get a point scred on me level 1 is over
-		if (this.x+this.side < 0 ){ 
+		
+		if (0 > this.x+this.side || this.x > WIDTH){ 
 		
 			console.log("game over");
-			location.href = 'Game_Olympics Level2.html';
 			
 		}
 		
