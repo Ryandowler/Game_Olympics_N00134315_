@@ -104,15 +104,31 @@ function update() {
 	ball.update();
 	player.update();
 	ai.update();
-
 }
 
 //Clear canvas and draw all game objects and net
 function draw() {
+	ctx.fillRect(0,0, WIDTH, HEIGHT);
+	
+	ctx.save();
+	ctx.fillStyle = "#fff";
+	
 	ball.draw();
 	player.draw();
 	ai.draw();
-
+	
+	
+	//The net down the centre of the screeen
+	var w = 4;
+	var x = (WIDTH - w)*0.5;
+	var y = 0;
+	var step = HEIGHT/50; //the step, the higher the number the more dots in the net
+	while(y < HEIGHT){
+		ctx.fillRect(x, y+step*0.25, w, step*0.5);
+		y += step;
+	}
+	
+	ctx.restore();
 }
 
 //start and run the game
