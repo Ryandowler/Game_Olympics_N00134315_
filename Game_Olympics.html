@@ -86,9 +86,10 @@ ball = {
 			this.vel.y *= -1;
 		}
 		
-		
+		//helper function to check if ball hits paddle.....//if intersect returns true else false
 		var AABBIntersect = function(ax, ay, aw, ah, bx, by, bw, bh){
-			return ax < bx+bw && ay< by+bh && bx < ax+aw && by < ay+ah;
+			return ax < bx+bw && ay< by+bh && 
+				   bx < ax+aw && by < ay+ah;
 		};
 		var pdle = this.vel.x <0 ? player : ai;
 		if(AABBIntersect(pdle.x, pdle.y, pdle.width, pdle.height,
