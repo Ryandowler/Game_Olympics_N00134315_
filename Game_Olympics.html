@@ -12,6 +12,9 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
+		border: 1px solid black;
+		
+		
 	}
 	</style>
 </head>
@@ -22,13 +25,45 @@ var WIDTH  = 700,	//value for width
 	HEIGHT = 600,	//value for height
 	pi = Math.PI,	//making it easier to use PI
 	UpArrow   = 38, //keycode for up arrow
-	DownArrow = 40, //keycode for down arrow
-
-
+	DownArrow = 40; //keycode for down arrow
 //Game elements
-canvas,ctx,keystate,
-player, ai, ball;
+var canvas, ctx, keystate, player, ai, ball;
 
+
+player = {
+	x: null,
+	y: null,
+	width: 20,
+	height: 100,
+	
+	update: function(){},
+	draw: function(){
+		ctx.fillRect(this.x, this.y, this.width, this.height);
+	}
+};
+
+ai = {
+	x: null,
+	y: null,
+	width: 20,
+	height: 100,
+	
+	update: function(){},
+	draw: function(){
+		ctx.fillRect(this.x, this.y, this.width, this.height);
+	}
+};
+
+ball = {
+	x: null,
+	y: null,
+	side: 20, //ball is a square so only needs one measurement
+	
+	update: function(){},
+	draw: function(){
+		ctx.fillRect(this.x, this.y, this.side, this.side);
+	}
+};
 
 
 //Starts the game
@@ -37,7 +72,7 @@ function main() {
 	canvas.width = WIDTH; //assigning width of canvas to be the constant
 	canvas.height = HEIGHT; //assigning height of canvas to be the constant
 	ctx = canvas.getContext("2d");
-	document.body.appendChild("canvas");
+	document.body.appendChild(canvas);
 	
 	init();
 	
@@ -46,22 +81,37 @@ function main() {
 		draw();
 		
 		window.requestAnimationFrame(loop, canvas);
-	}
+	};
 	window.requestAnimationFrame(loop, canvas);
 }
 
 //Initatite game objects and set start positions
 function init() {
+	//set starting positions
+	player.x = player.width;
+	player.y = (HEIGHT - player.height)/2;
+	
+	ai.x = WIDTH - (player.width + ai.width);
+	ai.y = (HEIGHT - ai.height)/2;
+	
+	ball.x = (WIDTH - ball.side)/2;
+	ball.y = (HEIGHT - ball.side)/2;
 
 }
 
 //Update all game objects
 function update() {
+	ball.update();
+	player.update();
+	ai.update();
 
 }
 
 //Clear canvas and draw all game objects and net
 function draw() {
+	ball.draw();
+	player.draw();
+	ai.draw();
 
 }
 
