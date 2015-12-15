@@ -63,9 +63,34 @@ ai = {
 ball = {
 	x: null,
 	y: null,
+	vel: null, //velocity
+	speed: 5,
 	side: 20, //ball is a square so only needs one measurement
 	
-	update: function(){},
+	update: function(){
+		this.x += this.vel.x;
+		this.y += this.vel.y;
+		
+		//simple hit detection
+		//if(this.y < 0 || this.y + this.side > HEIGHT) {
+			//reverse direction
+		//	this.vel.y *= -1;
+		//}
+		
+		
+		var AABBIntersect = function(ax, ay, aw, ah, bx, by, bw, bh){
+			return ax < bx+bw && ay< by+bh && bx < ax+aw && by < ay+ah;
+		};
+		var pdle = this.vel.x <0 ? player : ai;
+		if(AABBIntersect(pdle.x, pdle.y, pdle.width, pdle.height,
+						this.x, this.y, this.side, this. side)
+		)
+		{
+			
+			this.vel.x *= -1;
+		}
+	
+	},
 	draw: function(){
 		ctx.fillRect(this.x, this.y, this.side, this.side);
 	}
@@ -114,6 +139,12 @@ function init() {
 	
 	ball.x = (WIDTH - ball.side)/2;
 	ball.y = (HEIGHT - ball.side)/2;
+	
+	ball.vel = {
+		x: ball.speed,
+		y: 0
+	
+	}
 
 }
 
