@@ -17,32 +17,37 @@
 </head>
 <body>
 <script>
-var
+//Variables
+var WIDTH  = 700,	//value for width
+	HEIGHT = 600,	//value for height
+	pi = Math.PI,	//making it easier to use PI
+	UpArrow   = 38, //keycode for up arrow
+	DownArrow = 40, //keycode for down arrow
 
-/**
- * Constants
- */
-WIDTH  = 700,
-HEIGHT = 600,
 
-pi = Math.PI,
-
-UpArrow   = 38,
-DownArrow = 40,
-
-/**
- * Game elements
- */
-canvas,
-ctx,
-keystate,
+//Game elements
+canvas,ctx,keystate,
 player, ai, ball;
 
 
 
 //Starts the game
 function main() {
-
+	canvas = document.createElement("canvas"); //creating the canvas
+	canvas.width = WIDTH; //assigning width of canvas to be the constant
+	canvas.height = HEIGHT; //assigning height of canvas to be the constant
+	ctx = canvas.getContext("2d");
+	document.body.appendChild("canvas");
+	
+	init();
+	
+	var loop = function(){
+		update();
+		draw();
+		
+		window.requestAnimationFrame(loop, canvas);
+	}
+	window.requestAnimationFrame(loop, canvas);
 }
 
 //Initatite game objects and set start positions
