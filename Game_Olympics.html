@@ -36,7 +36,13 @@ player = {
 	width: 20,
 	height: 100,
 	
-	update: function(){},
+	update: function(){
+		//if up is pressed move up 7 pixels
+		if(keystate[UpArrow]) this.y -= 7;
+		
+		//if down is pressed move down 7 pixels
+		if(keystate[DownArrow]) this.y += 7;
+	},
 	draw: function(){
 		ctx.fillRect(this.x, this.y, this.width, this.height);
 	}
@@ -74,6 +80,18 @@ function main() {
 	ctx = canvas.getContext("2d");
 	document.body.appendChild(canvas);
 	
+	//capturing the keystate
+	keystate = {};
+	//pressed
+	document.addEventListener("keydown", function(evt) {
+		keystate[evt.keyCode] = true;
+	});
+	//released
+	document.addEventListener("keyup", function(evt) {
+		delete keystate[evt.keyCode];
+	});
+	
+
 	init();
 	
 	var loop = function(){
