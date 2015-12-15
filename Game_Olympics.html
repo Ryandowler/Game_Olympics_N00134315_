@@ -77,6 +77,15 @@ ball = {
 		//	this.vel.y *= -1;
 		//}
 		
+		if (0 > this.y || this.y+this.side > HEIGHT) {
+			// calculate and add the right offset, i.e. how far
+			// inside of the canvas the ball is
+			var offset = this.vel.y < 0 ? 0 - this.y : HEIGHT - (this.y+this.side);
+			this.y += 2*offset;
+			// mirror the y velocity
+			this.vel.y *= -1;
+		}
+		
 		
 		var AABBIntersect = function(ax, ay, aw, ah, bx, by, bw, bh){
 			return ax < bx+bw && ay< by+bh && bx < ax+aw && by < ay+ah;
@@ -86,8 +95,12 @@ ball = {
 						this.x, this.y, this.side, this. side)
 		)
 		{
+			this.x = pdle===player ? player.x+player.width : ai.x - this.side;
+			var n = (this.y+this.side - pdle.y) / (pdle.height + this.side);
+			var phi = 0.25*pi*(2*n -1);
+			this.vel.x = (pdle===player ? 1 : -1)* this.speed*Math.cos(phi);
+			this.vel.y = (this.speed*Math.sin(phi));
 			
-			this.vel.x *= -1;
 		}
 	
 	},
