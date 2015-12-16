@@ -1,7 +1,9 @@
 		html{
 	background-color: black;
 	}
-	
+		body {
+    overflow:hidden;
+}
 	canvas {
 		display: block;
 		position: absolute;
@@ -25,4 +27,5 @@
     border: 0px;
     width: 5em;
     height: 5em;
+	
 }
