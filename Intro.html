@@ -6,12 +6,20 @@
 	
 	<script>
 	
-		var spacebar = 32;
-		var keystate;
+		var audio = new Audio('sounds/start.mp3');
+		var audio1 = new Audio('sounds/startUpMusic.mp3');
+
 		
+	//audio.play();
 	
 	
 	
+	window.onload = bleh;
+	
+	function bleh(){
+		audio1.play();
+	
+	}
 	
 	
 		
@@ -29,8 +37,14 @@
 	
 </head>
 
-	<body>
+	<body onkeydown="checkKeys(event)">
 	
+	
+	<div style="display:none;">
+    <audio id="audio1" src="sounds/start.mp3" controls preload="auto" autobuffer></audio>
+</div>
+
+
 		
 		<img class="transition" src="images/intro.gif">
 
@@ -38,16 +52,77 @@
 	
 	
 	<script>
-	function example(){
 	
-		location.href = 'Game_Olympics.html';
 	
-	}
+	var motion="static"; //this variable is the key for changing our animations
 	
-	setTimeout(example, 6000);
+	
+		//////////////////////////////////
+			// checkKeys function
+			//////////////////////////////////
+			function checkKeys(e) {
+				var keyPressed = e.keyCode;
+				console.log(keyPressed);
+				
+				
+				if (keyPressed == 32)
+				{
+					StartSound('audio1'); //calls function that plays start sound
+				}
+				
+				
+				//plays start music and delays the href by enough time to finish the sound clip
+				function StartSound(soundobj)
+				{
+					var thissound=document.getElementById(soundobj); thissound.play(); 
+					setTimeout( function(){ window.location.href = 'Game_Olympics.html'; }, 1300); 
+				} 
+
+			   //reset count
+			   count = 0;
+			    switch (keyPressed) {
+					//left
+					case (32):
+						motion = "space";
+						break;
+					//right
+					case (39):
+						motion = "right";
+						break;
+					//up
+					case (38):
+						motion = "up";
+						break;
+					//down
+					case (40):
+						motion = "down";
+						break;
+					default:
+						//console.log("default key");
+						motion = "static";
+
+				}
+			}
+			
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	</script>
+	
+	
+	
+	
 	
 	
 	
