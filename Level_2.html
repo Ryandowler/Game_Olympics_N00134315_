@@ -5,7 +5,7 @@
 		gamelength=30; //seconds in game
 		timerID=null
 		var playing=false;
-		var numholes=7*10;
+		var numholes=1*10;
 		var currentpos=-1;
 		
 		function clrholes() {
@@ -39,7 +39,14 @@
 		
 		
 		
-		
+			function stopgame() {
+			stoptimer();
+			playing=false;
+			document.cpanel.timeleft.value=0;
+			clrholes();
+			display("Game Over");
+			alert('Game Over.\nYour score is:  '+totalhits);
+		}
 		
 		
 		
