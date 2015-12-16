@@ -3,6 +3,15 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 		<SCRIPT LANGUAGE="JavaScript">
 		
+		//plays the levels soundtrack in a loop
+		myAudio = new Audio('sounds/level2Soundtrack.mp3'); 
+		myAudio.addEventListener('ended', function() {
+			this.currentTime = 0;
+			this.play();
+		}, false);
+		myAudio.play();
+		
+		
 		gamelength=30; //seconds in game
 		timerID=null
 		var playing=false;

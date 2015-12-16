@@ -10,6 +10,15 @@
 </head>
 <body>
 <script>
+//plays the levels soundtrack in a loop
+myAudio = new Audio('sounds/level1Soundtrack.mp3'); 
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+myAudio.play();
+
+
 //Variables
 var WIDTH  = 700,	//value for width
 	HEIGHT = 600,	//value for height

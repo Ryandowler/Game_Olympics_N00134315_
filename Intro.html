@@ -1,50 +1,33 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-	<title>Game Olympics Loading</title>
-	
-	
-	<script>
-	
-		var audio = new Audio('sounds/start.mp3');
-		var audio1 = new Audio('sounds/startUpMusic.mp3');
-
-		
-	//audio.play();
-	
-	
-	
-	window.onload = bleh;
-	
-	function bleh(){
-		audio1.play();
-	
-	}
-	
-	
-		
-	</script>
-	
 	<style>
-	
-	
 	.transition{
 		width: 100%;
 		height: 100%;	
 	}
-
 	</style>
+	<title>Game Olympics Loading</title>
 	
+	<script>
+		//variables
+		var audio = new Audio('sounds/start.mp3');			//sound effect for spacebar pressed
+		var audio1 = new Audio('sounds/startUpMusic.mp3');	//start up music
+	
+	
+	//on window load calls function that plays start up music
+	window.onload = startUpMusoc;
+	
+	//plays start up music
+	function startUpMusoc(){
+		audio1.play();
+	}	
+	</script>	
 </head>
-
 	<body onkeydown="checkKeys(event)">
-	
-	
-	<div style="display:none;">
-    <audio id="audio1" src="sounds/start.mp3" controls preload="auto" autobuffer></audio>
-</div>
-
-
+		<div style="display:none;">
+			<audio id="audio1" src="sounds/start.mp3" controls preload="auto" autobuffer></audio>
+		</div>
 		
 		<img class="transition" src="images/intro.gif">
 
@@ -52,25 +35,18 @@
 	
 	
 	<script>
+		var motion="static"; //this variable is the key for changing our animations
 	
-	
-	var motion="static"; //this variable is the key for changing our animations
-	
-	
-		//////////////////////////////////
 			// checkKeys function
-			//////////////////////////////////
 			function checkKeys(e) {
 				var keyPressed = e.keyCode;
 				console.log(keyPressed);
-				
 				
 				if (keyPressed == 32)
 				{
 					StartSound('audio1'); //calls function that plays start sound
 				}
-				
-				
+					
 				//plays start music and delays the href by enough time to finish the sound clip
 				function StartSound(soundobj)
 				{
@@ -80,7 +56,7 @@
 
 			   //reset count
 			   count = 0;
-			    switch (keyPressed) {
+				switch (keyPressed) {
 					//left
 					case (32):
 						motion = "space";
@@ -103,21 +79,6 @@
 
 				}
 			}
-			
-			
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	</script>
 	
 	
