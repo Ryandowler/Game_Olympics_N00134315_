@@ -142,15 +142,29 @@ ball = {
 		}
 		
 		
+		//player scored replace the ball on the canvas
+		if (this.x > WIDTH){ 
 		
-		
-		
-		
-		
-		
-		
-		
+			
+			ball.x = (WIDTH - ball.side)/2;
+			ball.y = (HEIGHT - ball.side)/2;
 	
+			ball.vel = {
+				x: ball.speed,
+				y: 0
+			
+			}
+		
+			console.log("You Scored");
+			
+			
+		}
+		
+		
+		
+		
+		
+		
 	},
 	draw: function(){
 		ctx.fillRect(this.x, this.y, this.side, this.side);
