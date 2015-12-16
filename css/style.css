@@ -21,4 +21,8 @@
 		height: 100%;	
 	}
 
+   input[type=radio] {
+    border: 0px;
+    width: 5em;
+    height: 5em;
 }
