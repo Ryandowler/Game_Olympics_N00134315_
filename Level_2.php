@@ -12,6 +12,16 @@ require 'gameMenu.php';
 
 
         <SCRIPT LANGUAGE="JavaScript">
+            //score gets recieved as a string
+            var scoreRecieved = localStorage.score1;
+           
+            //score is recieved as a String so muct convert back to a number
+            var convertToInt = +scoreRecieved;
+            scoreRecieved = convertToInt;
+            
+            
+            
+            var totalAfter_level2;
             window.onload = play; //start game
 
             var sound = false; //soundtrack initually set to not playing
@@ -80,7 +90,10 @@ require 'gameMenu.php';
                 document.cpanel.timeleft.value = 0;
                 clrholes();
                 display("Game Over");
-                alert('Game Over.\nYour score is:  ' + totalhits + " bleh " + gameScore);
+                totalAfter_level2 = totalhits +scoreRecieved;
+                //localStorage.setItem("score1", scoreRecieved);
+                
+                alert('Game Over.\nYour score is:  ' + totalhits + " bleh " + totalAfter_level2 );
             }
 
 
@@ -94,7 +107,7 @@ require 'gameMenu.php';
                 }
                 playing = true;
                 clrholes();
-                totalhits = 0;
+                totalhits = 0; //score this level
                 document.cpanel.score.value = totalhits;
                 gameScore 
                 display("Playing");

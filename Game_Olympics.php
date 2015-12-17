@@ -154,9 +154,11 @@ require 'gameMenu.php';
 
 
 
-
+                        var test = 32;
                     //if i get a point scored on me level 1 is over
                     if (this.x + this.side < 0) {
+                      localStorage.setItem("score1", test);
+
 
                         console.log("game over");
                         location.href = 'TransitionToLevel2.php';

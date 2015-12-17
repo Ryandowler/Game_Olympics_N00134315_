@@ -8,7 +8,12 @@
  
 <script type="text/javascript">
     
-alert (hehe);
+document.write("<h1> hi " +localStorage.score1 +"</h1>");
+var blehg = localStorage.score1;
+var testr = 0;
+console.log(blehg);
+testr = testr + blehg;
+console.log(testr);
 
 </script>
     

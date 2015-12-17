@@ -11,6 +11,7 @@
         <title>Game Olympics Loading</title>
 
         <script>
+            localStorage.clear();
             //variables
             var audio = new Audio('sounds/start.mp3');			//sound effect for spacebar pressed
             var audio1 = new Audio('sounds/startUpMusic.mp3');	//start up music

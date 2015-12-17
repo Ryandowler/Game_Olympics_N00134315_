@@ -7,11 +7,14 @@
 
 <body>
     
+        
+    
  
 <script type="text/javascript">
-console.log(hehe);
-hehe++;
-console.log(hehe);
+    localStorage.setItem("ggg", "ss");
+            
+    
+
 </script>
     
     
