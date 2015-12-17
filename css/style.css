@@ -1,60 +1,60 @@
-		html{
-	background-color: black;
-	}
-		body {
+html{
+    background-color: black;
+}
+body {
     overflow:hidden;
 }
-	canvas {
-		display: block;
-		position: absolute;
-		margin: auto;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		border: 1px solid black;
-	}
-	
-	
-	
-	
-		.transition{
-		width: 100%;
-		height: 100%;	
-	}
+canvas {
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid black;
+}
 
-   input[type=radio] {
+
+
+
+.transition{
+    width: 100%;
+    height: 100%;	
+}
+
+input[type=radio] {
     border: 0px;
     width: 5em;
     height: 5em;
-	
+
 }
 
 
 //****************************************** Game Menu Stuff*************************************//
 
-			.dropdown {
-			position: relative;
+.dropdown {
+    position: relative;
 
-			/** Make it fit tightly around it's children */
-			display: inline-block;
-		}
+    /** Make it fit tightly around it's children */
+    display: inline-block;
+}
 
-		.dropdown .dropdown-menu {
-			position: absolute;
+.dropdown .dropdown-menu {
+    position: absolute;
 
-			/**
-			 * Set the top of the dropdown menu to be positioned 100%
-			 * from the top of the container, and aligned to the left.
-			 */
-			top: 100%;
-			left: 0;
+    /**
+     * Set the top of the dropdown menu to be positioned 100%
+     * from the top of the container, and aligned to the left.
+     */
+    top: 100%;
+    left: 0;
 
-			/** Allow no empty space between this and .dropdown */
-			margin: 0;
-		}
-		
-		.dropdown:hover .dropdown-menu {
+    /** Allow no empty space between this and .dropdown */
+    margin: 0;
+}
+
+.dropdown:hover .dropdown-menu {
 
     /** Show dropdown menu */
     display: block;
@@ -73,7 +73,7 @@
     display: none;
     margin: 0;
 
-	
+
     list-style: none; /** Remove list bullets */
     width: 100%; /** Set the width to 100% of it's parent */
     padding: 0;
@@ -110,10 +110,10 @@
 
 
 .dropDownItem{
-    
+
     padding-left: 10px;
     margin-bottom: 100px; //being ignored FIX LATER
-    
+
 }
 
 

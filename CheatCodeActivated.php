@@ -1,19 +1,19 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        
         <style>
             .transition{
                 width: 100%;
                 height: 100%;	
             }
         </style>
-        <title>Game Olympics Loading</title>
+        <title>Cheat Code</title>
 
         <script>
             //variables
-            var audio = new Audio('sounds/start.mp3');			//sound effect for spacebar pressed
-            var audio1 = new Audio('sounds/startUpMusic.mp3');	//start up music
+            
+            var audio1 = new Audio('sounds/cheat.mp3');	//option selected sound
 
 
             //on window load calls function that plays start up music
@@ -21,21 +21,19 @@
 
             //plays start up music
             function startUpMusoc() {
-                audio1.play();
+               // audio1.play();
             }
         </script>	
     </head>
     <body onkeydown="checkKeys(event)">
         <div style="display:none;">
-            <audio id="audio1" src="sounds/start.mp3" controls preload="auto" autobuffer></audio>
+            <audio id="audio1" src="sounds/cheat.mp3" controls preload="auto" autobuffer></audio>
         </div>
 
-        <img class="transition" src="images/intro.gif">
+        <img class="transition" src="images/cheatActivated.gif  ">
 
 
     </body>
-
-
     <script>
         var motion = "static"; //this variable is the key for changing our animations
 
@@ -43,10 +41,25 @@
         function checkKeys(e) {
             var keyPressed = e.keyCode;
             //console.log(keyPressed);
-
-            if (keyPressed == 32)
+            var selected; //holds url for selected level to go to
+            
+            //option 1
+            if (keyPressed == 49)
             {
-                StartSound('audio1'); //calls function that plays start sound and level 1
+                StartSound('audio1'); //calls function that plays start sound  
+                selected = 'Game_Olympics.php';
+            }
+            //option 2
+            else if (keyPressed == 50)
+            {
+                StartSound('audio1'); //calls function that plays start sound  
+                selected = 'Level_2.php';
+            }
+            //option 3
+            else if (keyPressed == 51)
+            {
+                StartSound('audio1'); //calls function that plays start sound  
+                selected = 'Level_3.php';
             }
 
             //plays start music and delays the href by enough time to finish the sound clip
@@ -55,53 +68,25 @@
                 var thissound = document.getElementById(soundobj);
                 thissound.play();
                 setTimeout(function () {
-                    window.location.href = 'Game_Olympics.php';
-                }, 1300);
+                    window.location.href = selected;
+                }, 2800);
             }
-
-
-
-
-
-
-
-
-            //game Cheat         <moving mouse while pressing SHIFT ALT CTRL       
-            window.onmousemove = function (e) {
-                if (!e)
-                    e = window.event;
-                if (e.shiftKey)
-                {
-                    console.log("shift");/*shift is down*/
-                    if (e.altKey)
-                    {
-                        console.log("alt");/*alt is down*/
-
-                        if (e.ctrlKey) {
-                            console.log("ctrlllll");/*ctrl is down*/
-                            //alert("CHEAT UNLOCLED");
-                            window.location.href = 'CheatCodeActivated.php';
-
-                        }
-                    }
-                }
-               };
 
 
             //reset count
             count = 0;
             switch (keyPressed) {
                 //left
-                case (32):
-                    motion = "space";
+                case (49):
+                    motion = "one";
                     break;
                     //right
-                case (39):
-                    motion = "right";
+                case (50):
+                    motion = "two";
                     break;
                     //up
-                case (38):
-                    motion = "up";
+                case (51):
+                    motion = "three";
                     break;
                     //down
                 case (40):
