@@ -15,6 +15,8 @@ require 'gameMenu.php';
 <body>
 
 <script>
+    var sound = false;
+    
 //plays the levels soundtrack in a loop
 myAudio = new Audio('sounds/level1Soundtrack.mp3'); 
 myAudio.addEventListener('ended', function() {
@@ -22,10 +24,20 @@ myAudio.addEventListener('ended', function() {
     this.play();
 }, false);
 myAudio.play();
+sound = true;
 
 
 function toggleSound(){
-    myAudio.pause();
+    if(sound === true){
+        myAudio.pause();
+        sound = false;
+    }else{
+        myAudio.play();
+        sound = true;
+        
+    }
+   
+    
 }
 
 
