@@ -1,18 +1,28 @@
 <html>
 	<head>
+		<!-- Style-->
+		
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+		<!-- Javascript -->
+		<script src="js/npm.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		
 	</head>
 		<body>
 			<!-- dropdown container -->
 			<div class="dropdown">
 				<!-- trigger button -->
-				<button>Game Menu</button>
+				<button><p><span class="glyphicon glyphicon-cog"></span></p></button>
 
 				<!-- dropdown menu -->
 				<ul class="dropdown-menu">
-					<li><a href="#home">Quit</a></li>
-					<li><a href="#about">Start Again</a></li>
-					<li><a href="#contact">Toggle Sound</a></li>
+					<li><a href="#contact"><p><span class="glyphicon glyphicon-volume-off"></span> Toggle Sound</p></a></li>
+					<li><a href="#contact"><p><span class="glyphicon glyphicon-log-in"></span> Quit</p></a></li>
+					<li><a href="#contact"><p><span class="glyphicon glyphicon-flag"></span> Start Again</p></a></li>
 				</ul>
 			</div>
 		</body>

@@ -73,10 +73,7 @@
     display: none;
     margin: 0;
 
-    /****************
-     ** NEW STYLES **
-     ****************/
-
+	
     list-style: none; /** Remove list bullets */
     width: 100%; /** Set the width to 100% of it's parent */
     padding: 0;
@@ -88,7 +85,7 @@
 
 /** Button Styles **/
 .dropdown button {
-    background: #FF6223;
+    background: #e74c3c;
     color: #FFFFFF;
     border: none;
     margin: 0;
