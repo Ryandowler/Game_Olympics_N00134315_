@@ -8,6 +8,7 @@ require 'gameMenu.php';
 ?>
 <html>
     <head>
+         <script src="js/gameOlympics.js"></script>
 
 
         <SCRIPT LANGUAGE="JavaScript">
@@ -34,6 +35,7 @@ require 'gameMenu.php';
 
                 }
             }
+            
 
 
             gamelength = 30; //seconds in game
@@ -78,7 +80,7 @@ require 'gameMenu.php';
                 document.cpanel.timeleft.value = 0;
                 clrholes();
                 display("Game Over");
-                alert('Game Over.\nYour score is:  ' + totalhits);
+                alert('Game Over.\nYour score is:  ' + totalhits + " bleh " + gameScore);
             }
 
 
@@ -94,6 +96,7 @@ require 'gameMenu.php';
                 clrholes();
                 totalhits = 0;
                 document.cpanel.score.value = totalhits;
+                gameScore 
                 display("Playing");
                 launch();
                 showtime(gamelength);

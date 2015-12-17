@@ -5,6 +5,7 @@ require 'gameMenu.php';
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/gameOlympics.js"></script>
         <title>Level 1: Pong</title>
 
         <!-- Basic styling, centering the canvas ryan doo nott forget put in external fileeeee -->
@@ -47,7 +48,7 @@ require 'gameMenu.php';
                     pi = Math.PI, //making it easier to use PI
                     UpArrow = 38, //keycode for up arrow
                     DownArrow = 40; //keycode for down arrow
-            level_1_Score = 0;
+                    
             //Game elements
             var canvas, ctx, keystate, player, ai, ball;
 
@@ -165,8 +166,8 @@ require 'gameMenu.php';
                     //if i score a point
                     if (this.x > WIDTH) {
 
-                        level_1_Score++;
-                        console.log(level_1_Score);
+                        gameScore++;
+                        console.log(gameScore);
 
                     }
 
@@ -296,7 +297,7 @@ require 'gameMenu.php';
             //start and run the game
             main();
 
-
+console.log()
 
 
 
