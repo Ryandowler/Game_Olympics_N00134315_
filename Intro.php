@@ -51,7 +51,7 @@
 				function StartSound(soundobj)
 				{
 					var thissound=document.getElementById(soundobj); thissound.play(); 
-					setTimeout( function(){ window.location.href = 'Game_Olympics.html'; }, 1300); 
+					setTimeout( function(){ window.location.href = 'Game_Olympics.php'; }, 1300); 
 				} 
 
 			   //reset count

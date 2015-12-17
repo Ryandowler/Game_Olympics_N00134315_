@@ -43,7 +43,7 @@
 	<script>
 	function example(){
 	
-		location.href = 'Level_2.html';
+		location.href = 'Level_2.php';
 	
 	}
 	

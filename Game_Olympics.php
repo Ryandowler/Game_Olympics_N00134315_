@@ -1,3 +1,7 @@
+<?php
+require 'gameMenu.php';
+?>
+
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -20,8 +24,13 @@ myAudio.addEventListener('ended', function() {
 myAudio.play();
 
 
+function toggleSound(){
+    myAudio.pause();
+}
+
+
 //Variables
-var WIDTH  = 700,	//value for width
+var     WIDTH  = 700,	//value for width
 	HEIGHT = 600,	//value for height
 	pi = Math.PI,	//making it easier to use PI
 	UpArrow   = 38, //keycode for up arrow
@@ -138,7 +147,7 @@ ball = {
 		if (this.x+this.side < 0 ){ 
 		
 			console.log("game over");
-			location.href = 'TransitionToLevel2.html';
+			location.href = 'TransitionToLevel2.php';
 			
 		}
 		
@@ -274,6 +283,8 @@ function draw() {
 
 //start and run the game
 main();
+
+
 
 
 

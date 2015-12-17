@@ -100,11 +100,20 @@
     text-decoration: none;
     background: #CCCCCC;
     color: #333333;
+    width: 150px;
 }
 
 /** List Item Hover Styles **/
 .dropdown a:hover {
     background: #BBBBBB;
+}
+
+
+.dropDownItem{
+    
+    padding-left: 10px;
+    margin-bottom: 100px; //being ignored FIX LATER
+    
 }
 
 

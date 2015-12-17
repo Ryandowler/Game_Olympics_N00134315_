@@ -1,6 +1,15 @@
+<?php
+//require_once 'gameMenu.php'; 
+require_once 'Styles.php';
+?>
+
+<?php
+require 'gameMenu.php';
+?>
 <html>
 	<head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+        
 		<SCRIPT LANGUAGE="JavaScript">
 		window.onload = play;
 		
