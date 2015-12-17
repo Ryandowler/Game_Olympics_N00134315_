@@ -2,6 +2,8 @@
 	<head>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 		<SCRIPT LANGUAGE="JavaScript">
+		window.onload = play;
+		
 		
 		//plays the levels soundtrack in a loop
 		myAudio = new Audio('sounds/level2Soundtrack.mp3'); 
@@ -95,18 +97,18 @@
 		
 		
 		
-			function hithead(id) {
+			function hithead(id){
 			if(playing==false) {
 				clrholes();
 				display("Push Start to Play");
 				return;
 			}
-			if(currentpos!=id) {
+			if(currentpos!=id){
 				totalhits+=-1;
 				document.cpanel.score.value=totalhits;
 				document.dmz.elements[id].checked=false;
 			}
-			else {
+			else{
 				totalhits+=1;
 				document.cpanel.score.value=totalhits;
 				launch();
@@ -145,7 +147,7 @@
 					</tr>
 				</table>
 				</center>
-			</form>
+		</form>
 	
 		<form name="dmz">
 			<center> <!-- TAKE this out later, use bootrap-->

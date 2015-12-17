@@ -9,6 +9,7 @@
 	</style>
 </head>
 <body>
+
 <script>
 //plays the levels soundtrack in a loop
 myAudio = new Audio('sounds/level1Soundtrack.mp3'); 
@@ -25,6 +26,7 @@ var WIDTH  = 700,	//value for width
 	pi = Math.PI,	//making it easier to use PI
 	UpArrow   = 38, //keycode for up arrow
 	DownArrow = 40; //keycode for down arrow
+	level_1_Score = 0;
 //Game elements
 var canvas, ctx, keystate, player, ai, ball;
 
@@ -132,11 +134,19 @@ ball = {
 		
 		
 		
-		//if i get a point scred on me level 1 is over
+		//if i get a point scored on me level 1 is over
 		if (this.x+this.side < 0 ){ 
 		
 			console.log("game over");
 			location.href = 'TransitionToLevel2.html';
+			
+		}
+		
+		//if i score a point
+		if (this.x > WIDTH ){ 
+		
+			level_1_Score++;
+			console.log(level_1_Score);
 			
 		}
 		
@@ -219,6 +229,14 @@ function init() {
 		y: 0
 	
 	}
+	
+	
+	
+	
+	
+	
+	
+
 
 }
 
