@@ -5,7 +5,7 @@ require 'gameMenu.php';
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        
+
         <title>Level 1: Pong</title>
     </head>
     <body>

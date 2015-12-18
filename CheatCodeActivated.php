@@ -53,7 +53,7 @@
             else if (keyPressed == 50)
             {
                 StartSound('audio1'); //calls function that plays start sound  
-                selected = 'Level_2.php';
+                selected = 'Game_Olympics_level_2.php';
             }
             //option 3
             else if (keyPressed == 51)

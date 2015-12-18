@@ -81,23 +81,15 @@
             .dropdown a:hover {
                 background: #BBBBBB;
             }
-
-
-
         </style>
-
     </head>
     <body>
-
         <!-- dropdown container -->
         <div class="dropdown">
-
             <!-- trigger button -->
             <button><img src='images/icon_cog.png'></button>
-
             <!-- dropdown menu -->
             <ul class="dropdown-menu">
-
                 <li><a href="#contact" onclick="toggleSound()"><p><img src='images/icon_sound.png'><text class="dropDownItem"> Toggle Sound</text></p></a></li>
                 <li><a href="Intro.php"><p><img src='images/icon_quit.png'><text class="dropDownItem"> Quit</text></p></a></li>
                 <li><a href="Game_Olympics.php"><p><img src='images/icon_startAgain.png'><text class="dropDownItem"> Start Again</text></p></a></li>
