@@ -8,7 +8,11 @@ require 'gameMenu.php';
 ?>
 <html>
     <head>
-         <script src="js/gameOlympics.js"></script>
+        <style>
+            //level 2 buttons
+
+        </style>
+        
 
 
         <SCRIPT LANGUAGE="JavaScript">
@@ -53,6 +57,7 @@ require 'gameMenu.php';
             var playing = false;
             var numholes = 5 * 10;
             var currentpos = -1;
+            var gameScore;
 
             function clrholes() {
                 for (var k = 0; k < document.dmz.elements.length; k++)
