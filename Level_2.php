@@ -90,8 +90,10 @@ require 'gameMenu.php';
                 document.cpanel.timeleft.value = 0;
                 clrholes();
                 display("Game Over");
-                totalAfter_level2 = totalhits +scoreRecieved;
-                //localStorage.setItem("score1", scoreRecieved);
+                totalAfter_level2 = totalhits +scoreRecieved;   //DDING THE SCORE FROM LEVEL 1 AND 2 TOGeher
+                console.log("total after lvl2 "+totalAfter_level2);
+                localStorage.setItem("score2", totalAfter_level2); //sending the score on again 
+                console.log("scored in LEVEl 2  "+totalhits);
                 
                 alert('Game Over.\nYour score is:  ' + totalhits + " bleh " + totalAfter_level2 );
             }
