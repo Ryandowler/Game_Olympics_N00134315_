@@ -10,10 +10,23 @@ require 'gameMenu.php';
 
         <!-- Basic styling, centering the canvas ryan doo nott forget put in external fileeeee -->
         <style>
+            
 
+            #myTable{
+                margin-top: 1em;
+                color:white;
+                border: 1px solid white;
+            }
         </style>
     </head>
     <body>
+        <table id="myTable">
+            <tbody>
+                <tr>
+                    <td>Points: </td>
+                </tr>
+            </tbody>
+        </table>
 
         <script>
             var sound = false;//soundtrack initually set to not playing
@@ -27,7 +40,7 @@ require 'gameMenu.php';
             myAudio.play();
             sound = true; //soundtrack is playing
 
-             //funnction called when "toggle sound" is clicked. this function pauses/plays soundtrack
+            //funnction called when "toggle sound" is clicked. this function pauses/plays soundtrack
             function toggleSound() {
                 if (sound === true) {
                     myAudio.pause();
@@ -38,17 +51,43 @@ require 'gameMenu.php';
 
                 }
             }
-            
+
             scoreSound = new Audio('sounds/scoreSound.mp3');
 
 
+
+
+            //------------------score system------------------
+            //getting refference to the table element
+            var tableRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+
+            // Insert a row in the table
+            var newRow = tableRef.insertRow(tableRef.rows.length);
+
+            // Insert a cell in the row
+            var newCell = newRow.insertCell();
+
+            // Append a text node to the cell
+            var newText = document.createTextNode(" Score a Point!");
+
+            newCell.appendChild(newText);
+
+            //called when gamer scores point,   passes point updated variable to the table
+            function scoreTesttttttsstd() {
+                newText.nodeValue = gameScore;
+            }
+
+
+
+
+
             //Variables
-            var     WIDTH = 700, //value for width
+            var WIDTH = 700, //value for width
                     HEIGHT = 600, //value for height
                     pi = Math.PI, //making it easier to use PI
                     UpArrow = 38, //keycode for up arrow
                     DownArrow = 40; //keycode for down arrow
-                    
+
             //Game elements
             var canvas, ctx, keystate, player, ai, ball;
 
@@ -57,7 +96,7 @@ require 'gameMenu.php';
                 x: null,
                 y: null,
                 width: 20,
-                height:100,
+                height: 100,
                 update: function () {
                     //if up is pressed move up 7 pixels
                     if (keystate[UpArrow])
@@ -154,10 +193,10 @@ require 'gameMenu.php';
 
 
 
-                        var test = 32;
+                    var test = 32;
                     //if i get a point scored on me level 1 is over
                     if (this.x + this.side < 0) {
-                      localStorage.setItem("score1", test);
+                        localStorage.setItem("score1", test);
 
 
                         console.log("game over");
@@ -177,6 +216,7 @@ require 'gameMenu.php';
                     //player scored replace the ball on the canvas
                     if (this.x > WIDTH) {
                         scoreSound.play();
+                        scoreTesttttttsstd();
 
 
                         ball.x = (WIDTH - ball.side) / 2;
@@ -299,7 +339,25 @@ require 'gameMenu.php';
             //start and run the game
             main();
 
-console.log()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -35,16 +35,16 @@
             var convertToInt = +scoreRecievedEnd;
             scoreRecievedEnd = convertToInt;
             
-           // var gamerName = prompt ("Enter Your Name");
+           // 
             
        
            
           
 
-            
+            var gamerName = prompt ("Enter Your Name");
               var score = scoreRecievedEnd;
               var initials = gamerName;
-              //  function addNewScore()  {
+               function addNewScore()  {
               var tableRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
 
               // Insert a row in the table at row index 0
@@ -61,7 +61,7 @@
               newCell.appendChild(newText);
               newCell1.appendChild(newText1);
               
-     //  }
+     }
             
         </script>
 
