@@ -1,6 +1,7 @@
 
 <html>
     <head>
+        
         <?php
         //requiring in all stylesheets
         require_once 'Styles.php';
@@ -8,6 +9,11 @@
         require 'gameMenu.php';
         ?>
         <style>
+            body{
+                  cursor: crosshair;   
+            }
+          
+          
 
             .timeRemaining{
                 color: red;
@@ -33,7 +39,7 @@
         </table>
 
 
-        <form name="dmz">
+        <form id ="dmz" name="dmz">
             <center> <!-- TAKE this out later, use bootrap-->
                 <table cellspacing=30>	
                     <tr>
