@@ -9,13 +9,16 @@
             var COlS = 26, ROWS = 26;
             //IDs
             var EMPTY = 0, SNAKE = 1, FOOD = 2;
+            //Directions
+            var LEFT=0, UP=1, RIGHT=2, DOWN=3;
+            
             
             // -------- GRID -------- //
-            VAR grid = {
+            var grid = {
 
-            width:null;
-            height:null;
-            _grid:null;
+            width:null,
+            height:null,
+            _grid:null,
             
                 //---FUNCTIONS---//
             
@@ -40,7 +43,7 @@
                 },
                 // val, x position, y position
                 set: function(val, x, y){
-                    this.[x][y] = val;
+                    this._grid[x][y] = val;
                 },
                 
                 get: function(x,y){
@@ -52,9 +55,9 @@
             
             var snake = {
                 
-                direction:null;
-                last:null;
-                _queue:null;
+                direction:null,
+                last:null,
+                _queue:null,
                 
                 
                 //---FUNCTIONS---//
@@ -95,22 +98,73 @@
                 grid.set(FRUIT, randpos.x, randpos.y);
             }
             
+            
+            //Game Objects
+            
+            var canvas, ctx, keystate, frames;
+            
+            
             // ------ GAME FUNTIONS ------//
             
             function main(){
+                canvas = document.createElement("canvas");
+                canvas.width = COLS*20;
+                canvas.height = ROWS*20;
+                ctx = canvas.getContext("2d");
+                document.body.appendChild(canvas);
+                
+                frames = 0;
+                keystate={};
+                
+                init();
+                loop();
                 
             }
             function init(){
+                grid.init(EMPTY, COLS, ROWS);
                 
+                var sp = {x:Math.floor(COLS/2), y:ROWS-1};
+                snake.init(UP, sp.x, sp.y);
+                grid.set(SNAKE, sp.x, sp.y);
+                
+                setFood();    
             }
             function loop(){
+                update();
+                draw();
+                
+                window.requestAnimationFrame(loop, canvas);
                 
             }
             function update(){
+                frames++;
                 
             }
             
             function draw(){
+                var tw = canvas.width/grid.width;
+                var th = canvas.height/grid.height;
+                
+                
+                   for(var x=0; x< grid.width; x++){
+                    for(var y =0; y< grid.height; y++){
+                        
+                       switch(grid.get(x,y)){
+                           
+                           case EMPTY:
+                                ctx.fillStyle = "#fff";
+                                break;
+                           case SNAKE:
+                                ctx.fillStyle = "#0ff";
+                                break;
+                           case FRUIT: 
+                                ctx.fillStyle = "#f00";
+                                break; 
+                        }
+                        ctx.fillRect(x*tw, y*th, tw, th);
+                    }
+                } 
+                
                 
             }
             
