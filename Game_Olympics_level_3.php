@@ -183,13 +183,13 @@
             function update() {
                 frames++;
 
-                if (keystate[KEY_LEFT])
+                if (keystate[KEY_LEFT] && snake.direction!== RIGHT)
                     snake.direction = LEFT;
-                if (keystate[KEY_UP])
+                if (keystate[KEY_UP] && snake.direction!== DOWN)
                     snake.direction = UP;
-                if (keystate[KEY_RIGHT])
+                if (keystate[KEY_RIGHT] && snake.direction!== LEFT)
                     snake.direction = RIGHT;
-                if (keystate[KEY_DOWN])
+                if (keystate[KEY_DOWN] && snake.direction!== UP)
                     snake.direction = DOWN;
 
                 //every 5 frames
@@ -214,7 +214,8 @@
 
                     //if snake hits any walls it dies and restart by calling init()
                     if (0 > nx || nx > grid.width - 1 ||
-                            0 > ny || ny > grid.height - 1) {
+                        0 > ny || ny > grid.height -1 ||
+                        grid.get(nx, ny) === SNAKE ) {
 
                         return init();
                     }
