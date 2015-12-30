@@ -206,6 +206,13 @@
                     
                     snake.insert(tail.x, tail.y);
                     
+                    //if snake hits any walls it dies and restart by calling init()
+                    if(0> nx || nx >  grid.width-1 ||
+                       0> ny || ny > grid.height-1){
+                   
+                        return init();
+                    }
+                    
                 }
 
                 
