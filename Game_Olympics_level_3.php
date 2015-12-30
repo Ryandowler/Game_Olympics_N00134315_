@@ -1,14 +1,18 @@
 <!doctype html>
+<?php
+require 'gameMenu.php';
+?>
 <html lang="en">
     <head>
         <title>Level 3: Snake</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
 
         <!-- Basic styling, centering of the canvas. -->
         <style>
             canvas{
                 display: block;
                 position: absolute;
-                border: 1px solid #000;
+                border: 3px solid red;
                 margin: auto;
                 top: 0;
                 bottom: 0;
@@ -18,7 +22,15 @@
         </style>
     </head>
     <body>
+        <table id="scoreTable" >
+            <tbody>
+                <tr>
+                    <td><center>POINTS</center> </td>
+                </tr>
+            </tbody>
+        </table>
         <script>
+ 
             var
                     //constants
                     COLS = 26,
@@ -40,6 +52,38 @@
                     keystate, /* Object, used for keyboard inputs */
                     frames, /* number, used for animation */
                     score;	  /* number, keep track of the player score */
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                                //------------------score system------------------
+//getting refference to the table element
+var tableRef = document.getElementById('scoreTable').getElementsByTagName('tbody')[0];
+
+// Insert a row in the table
+var newRow = tableRef.insertRow(tableRef.rows.length);
+
+// Insert a cell in the row
+var newCell = newRow.insertCell();
+
+// Append a text node to the cell
+var newText = document.createTextNode("0");
+
+newCell.appendChild(newText);
+
+//called when gamer scores point,   passes point updated variable to the table
+function scoreBoard() {
+    newText.nodeValue = score;
+}
+newCell.className = newCell.className + "scoreCountCenter";
+
+           
+                    
+                    
+                    
 
             // -------- GRID -------- //
             grid = {
@@ -272,7 +316,7 @@
                         ctx.fillRect(x * tw, y * th, tw, th);
                     }
                 }
-                console.log("score is: " +score);
+               scoreBoard();
             }
             // start and run the game
             main();
