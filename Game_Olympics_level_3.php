@@ -222,6 +222,7 @@
 
                     if (grid.get(nx, ny) === FRUIT) {
                         var tail = {x: nx, y: ny};
+                        score+=10;
                         setFood();
                     } else {
 
@@ -271,8 +272,8 @@
                         ctx.fillRect(x * tw, y * th, tw, th);
                     }
                 }
+                console.log("score is: " +score);
             }
-
             // start and run the game
             main();
 
