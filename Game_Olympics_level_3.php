@@ -62,7 +62,7 @@
                     }
                 },
                 // val, x position, y position
-          set: function (val, x, y) {
+                set: function (val, x, y) {
                     this._grid[x][y] = val;
                 },
                 /**
@@ -141,10 +141,10 @@
 
                 frames = 0;
                 keystate = {};
-                document.addEventListener("keydown", function(evt){
+                document.addEventListener("keydown", function (evt) {
                     keystate[evt.keyCode] = true;
                 });
-                document.addEventListener("keyup", function(evt){
+                document.addEventListener("keyup", function (evt) {
                     delete keystate[evt.keyCode];
                 });
 
@@ -182,11 +182,15 @@
              */
             function update() {
                 frames++;
-                
-                if(keystate[KEY_LEFT]) snake.direction = LEFT;
-                if(keystate[KEY_UP]) snake.direction = UP;
-                if(keystate[KEY_RIGHT]) snake.direction = RIGHT;
-                if(keystate[KEY_DOWN]) snake.direction = DOWN;
+
+                if (keystate[KEY_LEFT])
+                    snake.direction = LEFT;
+                if (keystate[KEY_UP])
+                    snake.direction = UP;
+                if (keystate[KEY_RIGHT])
+                    snake.direction = RIGHT;
+                if (keystate[KEY_DOWN])
+                    snake.direction = DOWN;
 
                 //every 5 frames
                 if (frames % 5 === 0) {
@@ -207,27 +211,30 @@
                             ny++;
                             break;
                     }
-                    
-                      //if snake hits any walls it dies and restart by calling init()
+
+                    //if snake hits any walls it dies and restart by calling init()
                     if (0 > nx || nx > grid.width - 1 ||
-                        0 > ny || ny > grid.height - 1) {
+                            0 > ny || ny > grid.height - 1) {
 
                         return init();
                     }
-                    
-                    if(grid.get(nx, ny) === FRUIT){
-                        setFood();
-                    }
 
-                    var tail = snake.remove();
-                    grid.set(EMPTY, tail.x, tail.y);
-                    tail.x = nx;
-                    tail.y = ny;
+                    if (grid.get(nx, ny) === FRUIT) {
+                        var tail = {x: nx, y: ny};
+                        setFood();
+                    } else {
+
+                        var tail = snake.remove();
+                        grid.set(EMPTY, tail.x, tail.y);
+                        tail.x = nx;
+                        tail.y = ny;
+
+                    }
                     grid.set(SNAKE, tail.x, tail.y);
 
                     snake.insert(tail.x, tail.y);
 
-                  
+
 
                 }
 
