@@ -62,16 +62,20 @@
                     }
                 },
                 // val, x position, y position
-                set: function (val, x, y) {
+          set: function (val, x, y) {
                     this._grid[x][y] = val;
                 },
-                //Get the value of the cell at (x, y)
+                /**
+                 * Get the value of the cell at (x, y)
+                 * 
+                 * @param  {number} x the x-coordinate
+                 * @param  {number} y the y-coordinate
+                 * @return {any}   the value at the cell
+                 */
                 get: function (x, y) {
-                    // return the value at the cell
                     return this._grid[x][y];
                 }
             }
-
             //----------SNAKE----------//
             snake = {
                 direction: null, /* number, the direction */
@@ -203,6 +207,17 @@
                             ny++;
                             break;
                     }
+                    
+                      //if snake hits any walls it dies and restart by calling init()
+                    if (0 > nx || nx > grid.width - 1 ||
+                        0 > ny || ny > grid.height - 1) {
+
+                        return init();
+                    }
+                    
+                    if(grid.get(nx, ny) === FRUIT){
+                        setFood();
+                    }
 
                     var tail = snake.remove();
                     grid.set(EMPTY, tail.x, tail.y);
@@ -212,12 +227,7 @@
 
                     snake.insert(tail.x, tail.y);
 
-                    //if snake hits any walls it dies and restart by calling init()
-                    if (0 > nx || nx > grid.width - 1 ||
-                            0 > ny || ny > grid.height - 1) {
-
-                        return init();
-                    }
+                  
 
                 }
 
