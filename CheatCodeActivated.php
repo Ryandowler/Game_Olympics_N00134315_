@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        
+
         <style>
             .transition{
                 width: 100%;
@@ -12,17 +12,21 @@
 
         <script>
             //variables
-            
-            var audio1 = new Audio('sounds/cheat.mp3');	//option selected sound
 
+            var audio1 = new Audio('sounds/cheat.mp3');	//option selected sound
+            var audio2 = new Audio('sounds/cheatCodeActivated.mp3');	//page loads
 
             //on window load calls function that plays start up music
             window.onload = startUpMusoc;
 
             //plays start up music
             function startUpMusoc() {
-               // audio1.play();
+                audio2.play();
             }
+            
+            
+            localStorage.setItem("cheat", 500);
+
         </script>	
     </head>
     <body onkeydown="checkKeys(event)">
@@ -42,7 +46,7 @@
             var keyPressed = e.keyCode;
             //console.log(keyPressed);
             var selected; //holds url for selected level to go to
-            
+
             //option 1
             if (keyPressed == 49)
             {
@@ -59,7 +63,7 @@
             else if (keyPressed == 51)
             {
                 StartSound('audio1'); //calls function that plays start sound  
-                selected = 'Level_3.php';
+                selected = 'Game_Olympics_level_3.php';
             }
 
             //plays start music and delays the href by enough time to finish the sound clip

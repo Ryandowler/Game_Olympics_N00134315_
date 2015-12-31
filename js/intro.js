@@ -31,7 +31,7 @@ function checkKeys(e) {
         var thissound = document.getElementById(soundobj);
         thissound.play();
         setTimeout(function () {
-            window.location.href = 'Game_Olympics.php';
+            window.location.href = 'CharacterSelect.php';
         }, 1300);
     }
 

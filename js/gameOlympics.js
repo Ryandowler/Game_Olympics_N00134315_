@@ -173,7 +173,7 @@ ball = {
         //if gamer score a point
         if (this.x > WIDTH) {
 
-            gameScore++;
+            gameScore+=30;
             console.log(gameScore);
 
         }
