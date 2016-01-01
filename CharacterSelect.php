@@ -3,7 +3,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script type="text/javascript" src="js/raf.js"></script>
         <script type="text/javascript" src="js/AssetManager.js"></script>
-        <title>Level 2 Loading</title>
+        <title>Select Character</title>
         <style>
             /* this css Will only work internally*/
             .transition{
@@ -38,11 +38,19 @@
                     location.href = 'Game_Olympics.php';
                 }
                 setTimeout(waitForTransition, 12000);
+                localStorage.setItem("character", 1);
 
             }
             //char 2
             else if (keyPressed === 50)
             {
+                document.body.style.background = "#f3f3f3 url('images/char2_Animation_into_pong.gif')";
+                function waitForTransition() {
+                    location.href = 'Game_Olympics.php';
+                }
+                setTimeout(waitForTransition, 12000);
+                
+                localStorage.setItem("character", 2);
 
             }
 

@@ -2,12 +2,77 @@
 <html lang="en">
 
     <head>
+        <style>
+            html{   
+                /* background: url(images/scoreSoFar.gif) no-repeat center center fixed;*/
+                width: 100%;
+                height: 100%;
+
+            }
+            ul {
+                /*border: 1px solid black;*/
+                display: inline-block;  
+                list-style-type: none;
+
+            }   
+            #demo{
+                font-size: 3em;
+                color:black;
+                position: absolute;
+            }
+            
+            
+        </style>
 
         <title>Lab08 Solution: Spritesheet Walking NO.1</title>
 
         <script type="text/javascript" src="js/raf.js"></script>
         <script type="text/javascript" src="js/AssetManager.js"></script>
         <script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             var can, ctx;
             var count = 0;
             var count2 = 0;
@@ -62,8 +127,8 @@
 
             char2Walk = new Object();
             //coordinates for where to cut out the sprite from sprite sheet
-            char2Walk.static = {frames: [{x: 32, y: 0}], velocity: {vx: 0, vy: 0}};
-            char2Walk.down = {frames: [{x: 0, y: 0}, {x: 32, y: 0}, {x: 64, y: 0}], velocity: {vx: 0, vy: 1}};
+            char2Walk.static = {frames: [{x: 96, y: 0}], velocity: {vx: 0, vy: 0}};
+            char2Walk.down = {frames: [{x: 128, y: 0}, {x: 32, y: 0}, {x: 64, y: 0}], velocity: {vx: 0, vy: 1}};
             char2Walk.left = {frames: [{x: 0, y: 51}, {x: 32, y: 51}, {x: 64, y: 51}], velocity: {vx: -1, vy: 0}};
             char2Walk.right = {frames: [{x: 0, y: 102}, {x: 32, y: 102}, {x: 64, y: 102}], velocity: {vx: 1, vy: 0}};
             char2Walk.up = {frames: [{x: 0, y: 153}, {x: 32, y: 153}, {x: 64, y: 153}], velocity: {vx: 0, vy: -1}};
@@ -88,14 +153,26 @@
 
                 count = 0;
                 count2 = 0;
-                dx = can.width / 2;
-                dy = can.height / 2;
-                char1Draw();
+                dx = 20;
+                dy = 400;
 
-                dx2 = can.width / 3;
-                dy2 = can.height / 3;
-                char2Draw();
+                //if the player selected character 1 draw that charater 
+                if (character === "1") {
+                    char1Draw();
+
+                }
+
+
+                dx2 = can.width / 4;
+                dy2 = can.height / 2;
+
+                //if the player selected character 2 draw that charater 
+                if (character === "2") {
+                    char2Draw();
+
+                }
             }
+
 
             function char1Draw() {
                 //console.log("char1Draw function")
@@ -114,8 +191,9 @@
                 dy = dy + curVelocity.vy;
                 ctx.drawImage(walkImg, xSource, ySource, frameW, frameH, dx, dy, frameW, frameH);
 
-                if (sloMoCounter == sloMoRate) {
-                    if (count == curFrames.length - 1) {
+               
+                if (sloMoCounter === sloMoRate) {
+                    if (count === curFrames.length - 1) {
                         count = 0;
                     } else {
                         count++;
@@ -168,20 +246,20 @@
                             bx < ax + aw && by < ay + ah;
                 };
 
-               // var char1 = this.vel.x < 0 ? player : ai;
-               /* if (AABBIntersect(pdle.x, pdle.y, pdle.width, pdle.height,
-                        this.x, this.y, this.side, this.side)
-                        )
-                {
-                    this.x = pdle === player ? player.x + player.width : ai.x - this.side;
-                    var n = (this.y + this.side - pdle.y) / (pdle.height + this.side);
-                    var phi = 0.25 * pi * (2 * n - 1);
-
-                    var smash = Math.abs(phi) > 0.2 * pi ? 1.5 : 1;
-                    this.vel.x = smash * (pdle === player ? 1 : -1) * this.speed * Math.cos(phi);
-                    this.vel.y = smash * (this.speed * Math.sin(phi));
-                }
-        */
+                // var char1 = this.vel.x < 0 ? player : ai;
+                /* if (AABBIntersect(pdle.x, pdle.y, pdle.width, pdle.height,
+                 this.x, this.y, this.side, this.side)
+                 )
+                 {
+                 this.x = pdle === player ? player.x + player.width : ai.x - this.side;
+                 var n = (this.y + this.side - pdle.y) / (pdle.height + this.side);
+                 var phi = 0.25 * pi * (2 * n - 1);
+                 
+                 var smash = Math.abs(phi) > 0.2 * pi ? 1.5 : 1;
+                 this.vel.x = smash * (pdle === player ? 1 : -1) * this.speed * Math.cos(phi);
+                 this.vel.y = smash * (this.speed * Math.sin(phi));
+                 }
+                 */
 
 
             }
@@ -271,11 +349,14 @@
 
         </script>
         <style>
-            canvas{ background:url(background.jpg)}
+            canvas{
+                border: solid 1px black;
+            }
         </style>
     </head>
 
     <body onload="init()"   onkeydown="checkKeys(event)">
+        <ul id="demo"></ul>
         <h2>Game character version 1.</h2>
         <canvas id="canvas" width="800" height="500">
             Canvas is not supported
@@ -293,9 +374,97 @@
             }
             window.document.getElementById("Stop_Moving").addEventListener("click", stopAnim);
             window.document.getElementById("Start_Moving").addEventListener("click", startAnim);
+        </script>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+
+            //retrieving the score from localstorage
+            var scoreRecieved = localStorage.score2;
+            var scoreFromLevel2 = localStorage.scoreFromLevel2;
+            var scoreFromLevel3 = localStorage.scoreFromLevel3;
+            var cheat = localStorage.cheat;//score From cheat
+            var character = localStorage.character;
+
+            //check if is Nan, true will mean cheat not activated
+            var check = isNaN(cheat);
+            if (check) {
+                cheat = 0;
+            }
+            ;
+
+            //-----score is recieved as a String so muct convert back to a number---
+            //level 1 and 2 score combined
+            var convertToInt = +scoreRecieved;
+            scoreRecieved = convertToInt;
+
+            //level 2 score
+            var convertToInt2 = +scoreFromLevel2;
+            scoreFromLevel2 = convertToInt2;
+
+            //level 3 score
+            var convertToInt3 = +scoreFromLevel3;
+            scoreFromLevel3 = convertToInt3;
+
+            //cheat code
+            var convertToInt3 = +cheat;
+            cheat = convertToInt3;
+
+
+
+
+
+
+            //------------------disply score------------------
+
+            //getting refference to the list element
+            var list = document.getElementById('demo');
+
+            var entry = document.createElement('li');
+            var level2Score = scoreFromLevel2;
+
+            var entry3 = document.createElement('li');
+            var level3Score = scoreFromLevel3;
+
+            var entry2 = document.createElement('li');
+            var totalSofar = scoreRecieved + cheat + level3Score;
+
+            var entry0 = document.createElement('li');
+            var level1Score = totalSofar - level2Score - cheat - level3Score;
+
+
+
+
+           
+
+            
+            entry2.appendChild(document.createTextNode("Your Final Score Was only: " + totalSofar));
+            list.appendChild(entry2);
+
+
+            if (character === "1") {
+                console.log("char 1");
+
+            }
 
         </script>
 

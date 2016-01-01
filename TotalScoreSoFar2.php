@@ -28,6 +28,7 @@
             var scoreFromLevel2 = localStorage.scoreFromLevel2;
             var scoreFromLevel3 = localStorage.scoreFromLevel3;
             var cheat = localStorage.cheat;//score From cheat
+            var character = localStorage.character;
             
               //check if is Nan, true will mean cheat not activated
             var check = isNaN(cheat);
@@ -102,7 +103,7 @@
             function checkKeys(e) {
                 var keyPressed = e.keyCode;
 
-                if (keyPressed == 32)
+                if (keyPressed === 32)
                 {
                     window.location.href = 'Game_Olympics_level_3.php';
                 }
@@ -115,6 +116,11 @@
                         motion = "space";
                         break;
                 }
+            }
+            
+            if (character === "1"){
+                console.log("char 1");
+                
             }
 
 
