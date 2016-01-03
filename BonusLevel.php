@@ -32,6 +32,7 @@
 
             <script type="text/javascript">
 
+
                 var ASSET_MANAGER = new AssetManager();
 
                 ASSET_MANAGER.queueDownload('characters.png');
@@ -39,9 +40,39 @@
                 ASSET_MANAGER.queueDownload('coin_gold.png');
 
                 ASSET_MANAGER.downloadAll(init);
+                
+                
 
                 gamelength = 30; //seconds in game
                 timerID = null;
+
+
+                var coinAudio = new Audio('sounds/coin.mp3');
+
+                var sound = false; //soundtrack initually set to not playing
+                //plays the levels soundtrack in a loop
+                var myAudio = new Audio('sounds/bonusLevelSoundtrack.mp3');
+                
+                myAudio.addEventListener('ended', function () {
+                    this.currentTime = 0;
+                    this.play();
+                }, false);
+                myAudio.play();
+                sound = true;//soundtrack is playing
+
+                //funnction called when "toggle sound" is clicked. this function pauses/plays soundtrack
+                function toggleSound() {
+                    if (sound === true) {
+                        myAudio.pause();
+                        sound = false;//soundtrack is paused
+                    } else {
+                        myAudio.play();
+                        sound = true;//soundtrack is playing
+
+                    }
+            }
+
+
 
                 var playing = false;
 
@@ -68,7 +99,7 @@
                     stoptimer();
                     playing = false;
                     newText2.nodeValue = 0;
-                   
+
                     alert('Game Over.\nYour score is:  ');
                     //location.href = 'TotalScoreSoFar2.php';
                 }
@@ -233,17 +264,17 @@
                     if (curVeloc.vx > 0) {
                         if ((level[baseRow][baseCol + 1] && !level[baseRow][baseCol]) || (level[baseRow + 1][baseCol + 1] && !level[baseRow + 1][baseCol] && rowOverlap)) {
                             dx = baseCol * tileSize + tileSize / 2; //+tileSize/2 is a hack
-                            
+
                         }
                     }
 
                     if (curVeloc.vx < 0) {
                         if ((!level[baseRow][baseCol + 1] && level[baseRow][baseCol]) || (!level[baseRow + 1][baseCol + 1] && level[baseRow + 1][baseCol] && rowOverlap)) {
                             dx = (baseCol + 1) * tileSize;
-                            
+
                         }
                     }
-                 
+
                     // check for vertical collisions
 
                     baseCol = Math.floor(dx / tileSize);
@@ -255,8 +286,9 @@
                         if ((level[baseRow + 1][baseCol] && !level[baseRow][baseCol]) || (level[baseRow + 1][baseCol + 1] && !level[baseRow][baseCol + 1] && colOverlap)) {
                             dy = baseRow * tileSize + tileSize / 4; //+tileSize/4 is a hack
                             console.log("hit");
-                            
-                            
+                            coinAudio.play();
+
+
                         }
                     }
 
@@ -273,7 +305,7 @@
                     if (baseCol == objPos.x && baseRow == objPos.y) {
                         console.log("===coins collected:===" + coinCounter);
                         //increase coinCounter
-                        coinCounter += 50;
+                        coinCounter += 20;
                         coinCollet();
                         //get a new position for the next coin;
                         objPos = getRandomObjectPos();
