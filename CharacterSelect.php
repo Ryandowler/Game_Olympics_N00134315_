@@ -21,6 +21,16 @@
         function beginLevel1() {
             window.location.href = 'Game_Olympics.php';
         }
+        
+        //plays the levels soundtrack in a loop
+        var myAudio = new Audio('sounds/selectCharacter.mp3');
+        myAudio.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        myAudio.play();
+        sound = true; //soundtrack is playing
+
 
         var motion = "static";
 
@@ -49,7 +59,7 @@
                     location.href = 'Game_Olympics.php';
                 }
                 setTimeout(waitForTransition, 12000);
-                
+
                 localStorage.setItem("character", 2);
 
             }

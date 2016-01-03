@@ -52,6 +52,7 @@ require 'gameMenu.php';
             keystate, /* Object, used for keyboard inputs */
             frames, /* number, used for animation */
             score;	  /* number, keep track of the player score */
+            
 
 
 
@@ -261,8 +262,9 @@ require 'gameMenu.php';
                     0 > ny || ny > grid.height - 1 ||
                     grid.get(nx, ny) === SNAKE) {
                 localStorage.setItem("scoreFromLevel3", score);
-
-                location.href = 'TotalScoreSoFar2.php';
+                
+                location.href = 'ReturnToOrigionalForm.php';
+                //location.href = 'TotalScoreSoFar2.php';
             }
 
             if (grid.get(nx, ny) === FRUIT) {

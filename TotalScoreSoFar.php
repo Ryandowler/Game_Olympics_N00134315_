@@ -23,6 +23,7 @@
     <body onkeydown="checkKeys(event)" id="testr">
         <ul id="demo"></ul>
         <script>
+            //setting background
             document.body.style.background = " url('images/scoreSoFar.gif')";
             //retrieving the score from localstorage
             var scoreRecieved = localStorage.score2; //level 1 and 2 added together
