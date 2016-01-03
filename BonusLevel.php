@@ -40,8 +40,8 @@
                 ASSET_MANAGER.queueDownload('coin_gold.png');
 
                 ASSET_MANAGER.downloadAll(init);
-                
-                
+
+                // document.body.style.background = "#f3f3f3 url('images/bonusLevel.gif')";
 
                 gamelength = 30; //seconds in game
                 timerID = null;
@@ -52,7 +52,7 @@
                 var sound = false; //soundtrack initually set to not playing
                 //plays the levels soundtrack in a loop
                 var myAudio = new Audio('sounds/bonusLevelSoundtrack.mp3');
-                
+
                 myAudio.addEventListener('ended', function () {
                     this.currentTime = 0;
                     this.play();
@@ -70,7 +70,7 @@
                         sound = true;//soundtrack is playing
 
                     }
-            }
+                }
 
 
 
@@ -107,15 +107,18 @@
 
                 var can, ctx;
                 var count = 0;
+                var count2 = 0;
 
                 //var position of character x, y;
                 var dx, dy;
+                var dx2, dy2;
 
                 //variables are used to slow down animation
                 var sloMoCounter = 0;
                 var sloMoRate = 5;
 
                 var motion = "static"; //this variable is the key for changing our animations
+                //var motion2 = "static";
 
                 var walkImg = new Image();
                 var tileImg = new Image();
@@ -142,8 +145,26 @@
                     return this[str].velocity;
                 };
 
+                //char2
+                char2Walk = new Object();
+                //coordinates for where to cut out the sprite from sprite sheet
+                char2Walk.static = {frames: [{x: 96, y: 0}], velocity: {vx: 0, vy: 0}};
+                char2Walk.down = {frames: [{x: 128, y: 0}, {x: 32, y: 0}, {x: 64, y: 0}], velocity: {vx: 0, vy: 6}};
+                char2Walk.left = {frames: [{x: 0, y: 51}, {x: 32, y: 51}, {x: 64, y: 51}], velocity: {vx: -6, vy: 0}};
+                char2Walk.right = {frames: [{x: 0, y: 102}, {x: 32, y: 102}, {x: 64, y: 102}], velocity: {vx: 6, vy: 0}};
+                char2Walk.up = {frames: [{x: 0, y: 153}, {x: 32, y: 153}, {x: 64, y: 153}], velocity: {vx: 0, vy: -6}};
+                char2Walk.jump = {frames: [{x: 0, y: 153}, {x: 32, y: 153}, {x: 64, y: 153}], velocity: {vx: 5, vy: -5}};
+                char2Walk.returnFrames = function (str) {
+                    return this[str];
+                };
+                char2Walk.returnVelocity = function (str) {
+                    return this[str].velocity;
+                };
+
                 var curAnim;
+                var curVelocity;
                 var character1; //will contain the requestAnimationFrame for character1 walking;
+                var character2; //will contain the requestAnimationFrame for character1 walking;
 
                 //////////////////////////////////
                 //terrain render variables
@@ -194,13 +215,53 @@
                     coinImg = ASSET_MANAGER.getAsset('coin_gold.png');
 
                     count = 0;
+                    count2 = 0;
                     dx = can.width / 2 - tileSize / 2; 						//center the character
                     dy = can.height / 2 - tileSize / 2;
+
+                    dx2 = can.width / 4;
+                    dy2 = can.height / 2;
+                    char2Draw();
 
                     objPos = getRandomObjectPos();
                     //get the position of first object
 
                     render();
+                    char2Draw();
+                }
+
+
+                function char2Draw() {
+                    //console.log("char1Draw function")
+                   // randomDirection = ["left", "right", "down", "up"];
+                   // randomIndex = Math.floor(Math.random() * (randomDirection.length)) + 0;
+                    //randomDirection[randomIndex]
+
+                    character2 = requestAnimationFrame(char2Draw);
+                    curAnim = char2Walk.returnFrames(motion);
+                    curFrames = curAnim.frames;
+
+                    curVelocity = char2Walk.returnVelocity(motion);
+                    //console.log("count: " + count + "x: " + curFrames[count].x +"y: " +curFrames[count].y);
+
+                    ctx.clearRect(dx2 - 1, dy2 - 1, frameW + 2, frameH + 2);
+                    xSource2 = curAnim.frames[count2].x;
+                    //console.log("x: " + xSource2);
+                    ySource2 = curAnim.frames[count2].y;
+
+                    dx2 = dx2 + curVelocity.vx;
+                    dy2 = dy2 + curVelocity.vy;
+                    ctx.drawImage(walkImg, xSource2, ySource2, frameW, frameH, dx2, dy2, frameW, frameH);
+
+                    if (sloMoCounter === sloMoRate) {
+                        if (count2 === curFrames.length - 1) {
+                            count2 = 0;
+                        } else {
+                            count2++;
+                        }
+                        sloMoCounter = 0;
+                    }
+                    sloMoCounter++;
                 }
 
 
@@ -238,6 +299,7 @@
 
                     //console.log(curAnim);
                     ctx.clearRect(dx, dy, frameW, frameH);
+                    
                     renderBg();
                     //draws the coin
                     renderObject();

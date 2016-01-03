@@ -1,68 +1,63 @@
 <html>
     <head>
+        <style>
+            html{   
 
+                width: 100%;
+                height: 100%;
+
+            }
+            ul {
+                /*border: 1px solid black;*/
+                display: inline-block;  
+                list-style-type: none;
+
+            }   
+            #demo{
+                font-size: 1.5em;
+
+                position: absolute;
+            }
+        </style>
     </head>
-    <body>
-        
-      <table id="myTable">
-    <thead>
-        <tr>
-            <th>Player</th>
-            <th>Highscore</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>R.D</td> 
-            <td>20000</td> 
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td>My footer</td>
-        </tr>
-    </tfoot>
-</table>
-
-
-
-
-    </body>
-            <script>
-            var scoreRecievedEnd = localStorage.score1;
+    <body id="testr">
+        <ul id="demo"></ul>
+        <script>
+            
+            var name = prompt("What is your name");
+            
+            var hignscores = [];
+            hignscores.push({score: 1200, name: name});
            
-            //score is recieved as a String so muct convert back to a number
-            var convertToInt = +scoreRecievedEnd;
-            scoreRecievedEnd = convertToInt;
-            
-           // 
-            
-       
-           
-          
 
-            var gamerName = prompt ("Enter Your Name");
-              var score = scoreRecievedEnd;
-              var initials = gamerName;
-               function addNewScore()  {
-              var tableRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+            for (i = 0; i < hignscores.length; i++) {
+                //alert("score " + hignscores[i].score + " Name: " + hignscores[i].name);
+                
+                   //------------------disply High score------------------
 
-              // Insert a row in the table at row index 0
-              var newRow   = tableRef.insertRow(tableRef.rows.length);
-              var newRow2  = tableRef.insertRow(tableRef.rows.length);
+            //getting refference to the list element
+            var list = document.getElementById('demo');
 
-              // Insert a cell in the row at index 0
-              var newCell  = newRow.insertCell(0);
-              var newCell1  = newRow.insertCell(0);
+            //level 2
+            var entry = document.createElement('li');
+            var level2Score = hignscores[i].name;
 
-              // Append a text node to the cell
-              var newText  = document.createTextNode(score);
-              var newText1  = document.createTextNode(initials);
-              newCell.appendChild(newText);
-              newCell1.appendChild(newText1);
-              
-     }
-            
+
+            entry.appendChild(document.createTextNode("->>" + level2Score));
+            list.appendChild(entry);
+            }
+
+
+         
+
+
+
+
+
+
+
+
         </script>
-
+    </body>
 </html>
+

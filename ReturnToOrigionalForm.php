@@ -18,9 +18,6 @@
     </body>
     <script>
         document.body.style.background = "#f3f3f3 url('images/char1_Animation_Back_into_char.gif')";
-        function beginLevel1() {
-            window.location.href = 'Game_Olympics.php';
-        }
 
         //plays the levels soundtrack in a loop
         var myAudio = new Audio('sounds/transformation.mp3');
@@ -47,7 +44,7 @@
 
         function waitForTransition() {
             if (TotalScore<500) {
-                location.href = 'BonusLevel.php';
+                location.href = 'BonusLevelTest.php';
             }
             else{
                 location.href = 'TotalScoreSoFar2.php';

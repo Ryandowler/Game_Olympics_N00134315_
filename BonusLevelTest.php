@@ -46,6 +46,12 @@
             document.body.style.background = "#f3f3f3 url('images/bonusLevel.gif')";
         }
 
+
+        function transformation() {
+            location.href = 'BonusLevel.php';
+        }
+        setTimeout(transformation, 17000);
+
         var loaded = false;
 
         var can, ctx;
@@ -137,7 +143,7 @@
 
             dx2 = can.width / 4;
             dy2 = can.height / 2;
-            
+
             objPos = getRandomObjectPos();//coin
 
             //if the player selected character 2 draw that charater 
