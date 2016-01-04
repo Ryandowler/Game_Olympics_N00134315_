@@ -114,11 +114,11 @@ function hithead(id) {
         return;
     }
     if (currentpos !== id) {
-        totalhits += -15;
+        totalhits += -30;
         newText.nodeValue = totalhits;
         document.dmz.elements[id].checked = false; //doesnt allow to press in wrong radio button
     } else {
-        totalhits += 15;
+        totalhits += 30;
         scoreTesttttttsstd();
         launch();
         document.dmz.elements[id].checked = false;

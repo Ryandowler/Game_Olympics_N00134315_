@@ -269,7 +269,7 @@ require 'gameMenu.php';
 
             if (grid.get(nx, ny) === FRUIT) {
                 var tail = {x: nx, y: ny};
-                score += 10;
+                score += 15;
                 setFood();
             } else {
 
