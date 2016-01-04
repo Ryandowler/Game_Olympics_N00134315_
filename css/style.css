@@ -157,3 +157,15 @@ input[type=radio]:active {
     float: right;
     padding-right: 2%;
 }
+
+ #finalScoreWas{
+                font-size: 3em;
+                position: absolute;
+                color: white;
+                display: inline-block;  
+                list-style-type: none;
+            }
+            
+            .bonusText{
+                margin-left: 7em;
+            }   

@@ -44,7 +44,7 @@
 
         function waitForTransition() {
             if (TotalScore<500) {
-                location.href = 'BonusLevelTest.php';
+                location.href = 'PreBonusLevel.php';
             }
             else{
                 location.href = 'TotalScoreSoFar2.php';
