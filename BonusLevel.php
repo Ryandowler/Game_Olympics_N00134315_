@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        
+
         <style>
 
             canvas{
@@ -30,7 +30,7 @@
 
             <script type="text/javascript" src="js/raf.js"></script>
             <script type="text/javascript" src="js/AssetManager.js"></script>
-            
+
 
             <script type="text/javascript">
 
@@ -45,8 +45,9 @@
 
                 // document.body.style.background = "#f3f3f3 url('images/bonusLevel.gif')";
 
-                gamelength = 30; //seconds in game
+                gamelength = 3000; //seconds in game
                 timerID = null;
+                var character = localStorage.character; //retrieving character selectd from local storage
 
 
                 var coinAudio = new Audio('sounds/coin.mp3');
@@ -102,7 +103,7 @@
                     playing = false;
                     newText2.nodeValue = 0;
 
-                   // alert('Game Over.\nYour score is:  ');
+                    // alert('Game Over.\nYour score is:  ');
                     //location.href = 'TotalScoreSoFar2.php';
                     window.location.href = 'Scoreboard.php';
                 }
@@ -110,11 +111,11 @@
 
                 var can, ctx;
                 var count = 0;
-                var count2 = 0;
+
 
                 //var position of character x, y;
                 var dx, dy;
-                var dx2, dy2;
+
 
                 //variables are used to slow down animation
                 var sloMoCounter = 0;
@@ -133,12 +134,24 @@
 
                 // char1Walk object
 
+                if(character === "2"){
+                var char1Walk = new Object();
+                char1Walk.static = {frames: [{x: 128, y: 0}], velocity: {vx: 0, vy: 0}};
+                char1Walk.down = {frames: [{x: 96, y: 0}, {x: 128, y: 0}, {x: 160, y: 0}], velocity: {vx: 0, vy: 6}};
+                char1Walk.left = {frames: [{x: 96, y: 51}, {x: 128, y: 51}, {x: 160, y: 51}], velocity: {vx: -6, vy: 0}};
+                char1Walk.right = {frames: [{x: 96, y: 153}, {x: 128, y: 153}, {x: 160, y: 153}], velocity: {vx: 6, vy: 0}};
+                char1Walk.up = {frames: [{x: 96, y: 153}, {x: 128, y: 153}, {x: 160, y: 153}], velocity: {vx: 0, vy: -6}};
+            }else{
+
+
+                
                 var char1Walk = new Object();
                 char1Walk.static = {frames: [{x: 32, y: 0}], velocity: {vx: 0, vy: 0}};
                 char1Walk.down = {frames: [{x: 0, y: 0}, {x: 32, y: 0}, {x: 64, y: 0}], velocity: {vx: 0, vy: 6}};
                 char1Walk.left = {frames: [{x: 0, y: 51}, {x: 32, y: 51}, {x: 64, y: 51}], velocity: {vx: -6, vy: 0}};
                 char1Walk.right = {frames: [{x: 0, y: 102}, {x: 32, y: 102}, {x: 64, y: 102}], velocity: {vx: 6, vy: 0}};
                 char1Walk.up = {frames: [{x: 0, y: 153}, {x: 32, y: 153}, {x: 64, y: 153}], velocity: {vx: 0, vy: -6}};
+            }
 
                 char1Walk.returnFrames = function (str) {
                     return this[str].frames;
@@ -148,26 +161,12 @@
                     return this[str].velocity;
                 };
 
-                //char2
-                char2Walk = new Object();
-                //coordinates for where to cut out the sprite from sprite sheet
-                char2Walk.static = {frames: [{x: 96, y: 0}], velocity: {vx: 0, vy: 0}};
-                char2Walk.down = {frames: [{x: 128, y: 0}, {x: 32, y: 0}, {x: 64, y: 0}], velocity: {vx: 0, vy: 6}};
-                char2Walk.left = {frames: [{x: 0, y: 51}, {x: 32, y: 51}, {x: 64, y: 51}], velocity: {vx: -6, vy: 0}};
-                char2Walk.right = {frames: [{x: 0, y: 102}, {x: 32, y: 102}, {x: 64, y: 102}], velocity: {vx: 6, vy: 0}};
-                char2Walk.up = {frames: [{x: 0, y: 153}, {x: 32, y: 153}, {x: 64, y: 153}], velocity: {vx: 0, vy: -6}};
-                char2Walk.jump = {frames: [{x: 0, y: 153}, {x: 32, y: 153}, {x: 64, y: 153}], velocity: {vx: 5, vy: -5}};
-                char2Walk.returnFrames = function (str) {
-                    return this[str];
-                };
-                char2Walk.returnVelocity = function (str) {
-                    return this[str].velocity;
-                };
+
 
                 var curAnim;
                 var curVelocity;
                 var character1; //will contain the requestAnimationFrame for character1 walking;
-                var character2; //will contain the requestAnimationFrame for character1 walking;
+
 
                 //////////////////////////////////
                 //terrain render variables
@@ -218,53 +217,17 @@
                     coinImg = ASSET_MANAGER.getAsset('coin_gold.png');
 
                     count = 0;
-                    count2 = 0;
+
                     dx = can.width / 2 - tileSize / 2; 						//center the character
                     dy = can.height / 2 - tileSize / 2;
 
-                    dx2 = can.width / 4;
-                    dy2 = can.height / 2;
-                    char2Draw();
+
 
                     objPos = getRandomObjectPos();
                     //get the position of first object
 
                     render();
-                    char2Draw();
-                }
 
-
-                function char2Draw() {
-                    //console.log("char1Draw function")
-                   // randomDirection = ["left", "right", "down", "up"];
-                   // randomIndex = Math.floor(Math.random() * (randomDirection.length)) + 0;
-                    //randomDirection[randomIndex]
-
-                    character2 = requestAnimationFrame(char2Draw);
-                    curAnim = char2Walk.returnFrames(motion);
-                    curFrames = curAnim.frames;
-
-                    curVelocity = char2Walk.returnVelocity(motion);
-                    //console.log("count: " + count + "x: " + curFrames[count].x +"y: " +curFrames[count].y);
-
-                    ctx.clearRect(dx2 - 1, dy2 - 1, frameW + 2, frameH + 2);
-                    xSource2 = curAnim.frames[count2].x;
-                    //console.log("x: " + xSource2);
-                    ySource2 = curAnim.frames[count2].y;
-
-                    dx2 = dx2 + curVelocity.vx;
-                    dy2 = dy2 + curVelocity.vy;
-                    ctx.drawImage(walkImg, xSource2, ySource2, frameW, frameH, dx2, dy2, frameW, frameH);
-
-                    if (sloMoCounter === sloMoRate) {
-                        if (count2 === curFrames.length - 1) {
-                            count2 = 0;
-                        } else {
-                            count2++;
-                        }
-                        sloMoCounter = 0;
-                    }
-                    sloMoCounter++;
                 }
 
 
@@ -282,7 +245,7 @@
                     //accessing the 2D array means that Ypos is BEFORE Xpos
                     //i.e. level[randomYpos][randomXpos]
 
-                    while (level[randomYpos][randomXpos] != 0) {
+                    while (level[randomYpos][randomXpos] !== 0) {
                         randomYpos = Math.floor(Math.random() * levelRows);
                         randomXpos = Math.floor(Math.random() * levelCols);
                         console.log("Xpos: " + randomXpos + " Ypos: " + randomYpos + " Tile code: " + level[randomYpos][randomXpos]);
@@ -302,7 +265,7 @@
 
                     //console.log(curAnim);
                     ctx.clearRect(dx, dy, frameW, frameH);
-                    
+
                     renderBg();
                     //draws the coin
                     renderObject();
@@ -367,7 +330,7 @@
                     //coin collection
                     ////////////////////////
 
-                    if (baseCol == objPos.x && baseRow == objPos.y) {
+                    if (baseCol === objPos.x && baseRow === objPos.y) {
                         console.log("===coins collected:===" + coinCounter);
                         //increase coinCounter
                         coinCounter += 20;
@@ -384,8 +347,8 @@
                     ctx.drawImage(walkImg, xSource, ySource, frameW, frameH, dx, dy, frameW * 1.3, frameH * 1.3);
                     //ctx.restore();
 
-                    if (sloMoCounter == sloMoRate) {
-                        if (count == curAnim.length - 1) {
+                    if (sloMoCounter === sloMoRate) {
+                        if (count === curAnim.length - 1) {
                             count = 0;
                         } else {
                             count++;
@@ -415,16 +378,16 @@
 
                     for (i = 0; i < levelRows; i++) {
                         for (j = 0; j < levelCols; j++) {
-                            if (level[i][j] == 0) {
+                            if (level[i][j] === 0) {
                                 //draw the grass
                                 ctx.drawImage(tileImg, 5 + (32 * 6), 5, tileSize, tileSize, j * tileSize, i * tileSize, tileSize, tileSize);
                             }
 
-                            if (level[i][j] == 1) {
+                            if (level[i][j] === 1) {
                                 //draw the wall
                                 ctx.drawImage(tileImg, 5, 5, tileSize, tileSize, j * tileSize, i * tileSize, tileSize, tileSize);
                             }
-                            if (level[i][j] == 2) {
+                            if (level[i][j] === 2) {
                                 //draw the tiles
                                 ctx.drawImage(tileImg, 5 + 32, 5 + 32, tileSize, tileSize, j * tileSize, i * tileSize, tileSize, tileSize);
                             }
