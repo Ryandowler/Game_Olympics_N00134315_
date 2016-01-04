@@ -28,6 +28,15 @@ canvas {
     text-align: center;
 }
 
+.timeRemaining{
+    color: red;
+    font-size: 200%;
+}
+.scoreTable{
+    float: left;
+    clear:left;
+}
+
 
 
 /*gif for transitions*/
@@ -44,8 +53,8 @@ input[type=radio] {
 }
 
 input[type=radio]:active {
-                  cursor: cell;  
-            }
+    cursor: cell;  
+}
 
 
 
@@ -141,6 +150,10 @@ input[type=radio]:active {
 
 
 
-//*END************************************** Game Menu Stuff******************************END****//
+/*END************************************** Game Menu Stuff******************************END****/
 
-
+.decoyCoin{
+    color:white;
+    float: right;
+    padding-right: 2%;
+}
