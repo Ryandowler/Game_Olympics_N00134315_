@@ -2,6 +2,7 @@
 <html lang="en">
 
     <head>
+        
         <style>
 
             canvas{
@@ -29,6 +30,7 @@
 
             <script type="text/javascript" src="js/raf.js"></script>
             <script type="text/javascript" src="js/AssetManager.js"></script>
+            
 
             <script type="text/javascript">
 
@@ -100,8 +102,9 @@
                     playing = false;
                     newText2.nodeValue = 0;
 
-                    alert('Game Over.\nYour score is:  ');
+                   // alert('Game Over.\nYour score is:  ');
                     //location.href = 'TotalScoreSoFar2.php';
+                    window.location.href = 'Scoreboard.php';
                 }
 
 

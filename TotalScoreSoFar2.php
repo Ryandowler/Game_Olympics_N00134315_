@@ -18,11 +18,17 @@
                 color:black;
                 position: absolute;
             }
+            .fontWhite{
+                color:white;
+            }
         </style>
     </head>
     <body onkeydown="checkKeys(event)">
         <ul id="demo"></ul>
         <script>
+            document.body.style.background = " url('images/animatingScoreSoFar2.gif')";
+            
+            
             //retrieving the score from localstorage
             var scoreRecieved = localStorage.score2;
             var scoreFromLevel2 = localStorage.scoreFromLevel2;
@@ -106,6 +112,15 @@
             if (totalSofar < 500) {
                 location.href = 'BonusLevel.php';
             }
+            
+            
+            entry0.className = entry0.className + "fontWhite";
+            entry.className = entry.className + "fontWhite";
+            entry2.className = entry2.className + "fontWhite";
+            entry3.className = entry3.className + "fontWhite";
+            entryCheat.className = entryCheat.className + "fontWhite";
+            
+            
 
             // checkKeys function
             function checkKeys(e) {
@@ -113,7 +128,7 @@
 
                 if (keyPressed === 32)
                 {
-                    window.location.href = 'Game_Olympics_level_3.php';
+                    window.location.href = 'Scoreboard.php';
                 }
 
                 //reset count
