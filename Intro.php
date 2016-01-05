@@ -1,15 +1,8 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-         <script type="text/javascript" src="js/AssetManager.js"></script>
-        <style>
-            /* this css Will only work internally*/
-            .transition{
-                width: 100%;
-                height: 100%;	
-            }
-        </style>
+        <?php
+             require_once 'Styles.php';          //requiring in all stylesheets 
+        ?>
         <title>Game Olympics Loading</title>	
     </head>
     <body onkeydown="checkKeys(event)">

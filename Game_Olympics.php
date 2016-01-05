@@ -1,11 +1,9 @@
 <?php
-require 'gameMenu.php';
+require 'gameMenu.php';             //requiring in all stylesheets 
+require_once 'Styles.php';         //requiring in all stylesheets 
 ?>
-
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-
         <title>Level 1: Pong</title>
     </head>
     <body>
@@ -17,5 +15,5 @@ require 'gameMenu.php';
             </tbody>
         </table>
     </body>
-    <script src="js/gameOlympics.js"></script>
+    <script src="js/gameOlympics.js"></script> <!--Linking in the Javascript for this page -->
 </html>

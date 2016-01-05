@@ -4,25 +4,15 @@
         <script type="text/javascript" src="js/raf.js"></script>
         <script type="text/javascript" src="js/AssetManager.js"></script>
         <title>Select Character</title>
-        <style>
-            /* this css Will only work internally*/
-            .transition{
-                width: 100%;
-                height: 100%;	
-            }
-        </style>
     </head>
     <body onkeydown="checkKeys(event)">	
        <!-- <img class="transition" src="images/characterSelect.gif">-->
         <audio id="foobar" src="sounds/sound.mp3" preload="auto"> 
     </body>
     <script>
-        document.body.style.background = "#f3f3f3 url('images/characterSelect.gif')";
-        function beginLevel1() {
-            window.location.href = 'Game_Olympics.php';
-        }
+        document.body.style.background = "url('images/characterSelect.gif')";   //setting background image
         
-        //plays the levels soundtrack in a loop
+        //------plays the levels soundtrack in a loop----
         var myAudio = new Audio('sounds/selectCharacter.mp3');
         myAudio.addEventListener('ended', function () {
             this.currentTime = 0;
@@ -30,9 +20,6 @@
         }, false);
         myAudio.play();
         sound = true; //soundtrack is playing
-
-
-        var motion = "static";
 
         // checkKeys function
         function checkKeys(e) {
@@ -43,52 +30,32 @@
             //char 1
             if (keyPressed === 49)
             {
-                document.body.style.background = "#f3f3f3 url('images/char1_Animation_into_pong.gif')";
+                document.body.style.background = "#f3f3f3 url('images/char1_Animation_into_pong.gif')"; //changes bg to the animation for char 1
                 function waitForTransition() {
                     location.href = 'Game_Olympics.php';
                 }
-                setTimeout(waitForTransition, 12000);
-                localStorage.setItem("character", 1);
+                setTimeout(waitForTransition, 12000);                                                   //when animation is over go to level1
+                localStorage.setItem("character", 1);                                                   //saves the chosen char into local storage
 
             }
             //char 2
             else if (keyPressed === 50)
             {
-                document.body.style.background = "#f3f3f3 url('images/char2_Animation_into_pong.gif')";
+                document.body.style.background = "#f3f3f3 url('images/char2_Animation_into_pong.gif')";//changes bg to the animation for char 2
                 function waitForTransition() {
                     location.href = 'Game_Olympics.php';
                 }
-                setTimeout(waitForTransition, 12000);
-
-                localStorage.setItem("character", 2);
-
+                setTimeout(waitForTransition, 12000);                                                   //when animation is over go to level1
+                localStorage.setItem("character", 2);                                                   //saves the chosen char into local storage
             }
-
-            //reset count
-            count = 0;
-            switch (keyPressed) {
-                //left
+            switch (keyPressed) {    
                 case (49):
-                    motion = "one";
+                    motion = "one";     //character 1
                     break;
-                    //right
                 case (50):
-                    motion = "two";
+                    motion = "two";     //character 2
                     break;
-                    //up
-                case (51):
-                    motion = "three";
-                    break;
-                    //down
-                case (40):
-                    motion = "down";
-                    break;
-                default:
-                    //console.log("default key");
-                    motion = "static";
-
             }
         }
-
     </script>
 </html>

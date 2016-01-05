@@ -1,46 +1,20 @@
-
 <html>
-    <head>
-        
+    <head> 
         <?php
-        //requiring in all stylesheets
-        require_once 'Styles.php';
-        //requiring in the game menu
-        require 'gameMenu.php';
+        require_once 'Styles.php';          //requiring in all stylesheets 
+        require 'gameMenu.php';             //requiring in the game menu
         ?>
-        <style>
-            body{
-                  cursor: crosshair;   
-            }
-          
-          
-
-            .timeRemaining{
-                color: red;
-                font-size: 200%;
-            }
-           
-            
-              .scoreTable{
-            float: left;
-            clear:left;
-        }
-        </style>
     </head>
- 
-    <body>
+    <body id="level2Body">
         <table id="scoreTable">
             <tbody>
                 <tr>
-                    <td><center>Points | Time </center> </td>
+                    <td><center>Points | Time </center></td>
                 </tr>
-
             </tbody>
         </table>
-
-
         <form id ="dmz" name="dmz">
-            <center> <!-- TAKE this out later, use bootrap-->
+            <center><!-- Radio buttons-->
                 <table cellspacing=30>	
                     <tr>
                         <td align="center" valign="center"><input type="radio" onClick="hithead(0)"></td>
@@ -103,8 +77,8 @@
                         <td align="center" valign="center"><input type="radio" onClick="hithead(49)"></td>
                     </tr>
                 </table>
-            </center> <!-- TAKE this out later, use bootrap-->
+            </center> 
         </form>
     </body>
-    <script src="js/gameOlympics_level_2.js"></script>
+    <script src="js/gameOlympics_level_2.js"></script> <!--Linking in the Javascript for this page -->
 </html>

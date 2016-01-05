@@ -52,8 +52,12 @@ input[type=radio] {
     cursor: crosshair; 
 }
 
-input[type=radio]:active {
+input[type=radio]:active {  /* cursor change for level 2*/
     cursor: cell;  
+}
+
+#level2Body{                /* cursor change for level 2*/
+    cursor: crosshair;   
 }
 
 
@@ -158,14 +162,14 @@ input[type=radio]:active {
     padding-right: 2%;
 }
 
- #finalScoreWas{
-                font-size: 3em;
-                position: absolute;
-                color: white;
-                display: inline-block;  
-                list-style-type: none;
-            }
-            
-            .bonusText{
-                margin-left: 7em;
-            }   
+#finalScoreWas{
+    font-size: 3em;
+    position: absolute;
+    color: white;
+    display: inline-block;  
+    list-style-type: none;
+}
+
+.bonusText{
+    margin-left: 7em;
+}   
