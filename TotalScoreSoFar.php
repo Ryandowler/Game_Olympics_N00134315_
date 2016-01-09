@@ -15,7 +15,7 @@
             }   
             #demo{
                 font-size: 3em;
-               
+
                 position: absolute;
             }
         </style>
@@ -29,8 +29,9 @@
             var scoreRecieved = localStorage.score2; //level 1 and 2 added together
             var scoreFromLevel2 = localStorage.scoreFromLevel2;//score FromLevel 2
             var cheat = localStorage.cheat;//score From cheat
-            
-            var scoreHidden=false;
+            console.log("ff = " +scoreRecieved);
+
+            var scoreHidden = false;
             document.getElementById("testr").style.color = 'white';
 
 
@@ -40,6 +41,15 @@
                 cheat = 0;
             }
             ;
+
+            //check if is Nan, if it is set value to 0
+            var check = isNaN(scoreRecieved);
+            if (check) {
+                scoreRecieved = 0;
+            }
+            ;
+console.log("ff = " +scoreRecieved);
+
 
 
             //-----score is recieved as a String so muct convert back to a number---
@@ -72,18 +82,25 @@
             var entry0 = document.createElement('li');
             var level1Score = totalSofar - level2Score - cheat;
 
+            //check if is Nan, if it is set value to 0
+            var check = isNaN(level1Score);
+            if (check) {
+                level1Score = 0;
+            }
+            ;
+
             //cheat code
             var entryCheat = document.createElement('li');
             var cheatScore = cheat;
 
             entry0.appendChild(document.createTextNode("Level 1 Score: " + level1Score));
-            
-            
+
+
             //hide score when space pressed to view transformation into snake 
-            if(scoreHidden ===  false){
-                 list.appendChild(entry0);
+            if (scoreHidden === false) {
+                list.appendChild(entry0);
             }
-           
+
 
             entry.appendChild(document.createTextNode("Level 2 Score: " + level2Score));
             list.appendChild(entry);
@@ -116,7 +133,7 @@
                     setTimeout(waitForTransition, 9000);
 
 
-                    
+
                 }
 
                 //reset count

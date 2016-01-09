@@ -42,6 +42,20 @@
                 cheat = 0;
             }
             ;
+            //check if is Nan, if so set to 0 ( this is NaN if cheat activated )
+            var check = isNaN(scoreRecieved);
+            if (check) {
+                scoreRecieved = 0;
+            }
+            ;
+            //check if is Nan, if so set to 0 ( this is NaN if cheat activated )
+            var check = isNaN(scoreFromLevel2);
+            if (check) {
+                scoreFromLevel2 = 0;
+            }
+            ;
+            
+            
 
             //-----score is recieved as a String so muct convert back to a number---
             //level 1 and 2 score combined
@@ -82,6 +96,15 @@
 
             var entry0 = document.createElement('li');
             var level1Score = totalSofar - level2Score - cheat - level3Score;
+            
+             //check if is Nan, if it is set value to 0
+            var check = isNaN(level1Score);
+            if (check) {
+                level1Score = 0;
+            }
+            ;
+            
+            
 
 
 

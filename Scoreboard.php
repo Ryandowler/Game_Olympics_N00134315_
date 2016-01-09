@@ -1,64 +1,17 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <style>
-            
-            html{   
-
-                width: 100%;
-                height: 100%;
-                color: white;
-
-            }
-            ul {
-                /*border: 1px solid black;*/
-                display: inline-block;  
-                list-style-type: none;
-
-            }  
-
-
-            #demo{
-                font-size: 1.5em;
-                display: block;
-                position: absolute;
-                float: right;  
-                margin-left: 50%;
-                margin-top: -150px;
-                position: absolute;
-                
-            }
-            .gamerScoreStyle{
-                color:red;
-                font-weight: bold;
-            }
-            .headingStyle{
-                font-size: 2em;
-                font-weight: bold;
-            }
-            /*gamer position (1 or 4 etc) */
-            .positionStyle{
-                font-size: 9em;
-                text-align: center;
-                color: gold;
-            }
-            .scoreboardHeading{
-                font-size: 1.4em;
-            }
-        </style>
+        <?php
+        require_once 'Styles.php';          //requiring in all stylesheets 
+        ?>
     </head>
-    <body id="testr">
-        <table id="highscoreTable">
-           
-                    
-       
-        </table>
-        <ul id="demo"></ul>
+    <body id="whiteFont">
+        <table id="highscoreTable"></table>
+        <ul id="scoreboardList"></ul>
         <script>
-            
+            localStorage.setItem("cheat", 0);                        // reset cheat for second player
             //---reieve gamer score---
             var totalScore = localStorage.TotalScore;
-              //-----score is recieved as a String so muct convert back to a number---
+            //-----score is recieved as a String so muct convert back to a number---
             var convertToInt = +totalScore;
             totalScore = convertToInt;
 
@@ -85,20 +38,22 @@
             //console.log(hignscores[3]);
 
             //the list element
-            var list = document.getElementById('demo');
+            var list = document.getElementById('scoreboardList');
 
-            var gamerScore = totalScore;
+
             // var gamerInitials = "RD";
+            var gamerScore = totalScore;
 
+            if (localStorage.Two_Player_Entered === "false") {
+                localStorage.setItem("Player_One_Final_Score", gamerScore);     //player 1 score saved to localStorage
+                localStorage.setItem("Player_One_Initials", gamerInitials);     //player 1 initials saved 
+            } else {
+                localStorage.setItem("Player_Two_Final_Score", gamerScore);     //player 2 score saved to localStorage
+                localStorage.setItem("Player_Two_Initials", gamerInitials);     //player 2 initials saved
+            }
 
-
-
-            //  var randomLetter =["a","b","c"];
-            var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            //var randomLetter = letters.charAt(Math.floor(Math.random() * letters.length));
-
-
-
+            
+            // gets 2 random initials
             function randomInitials()
             {
                 var text = "";
@@ -110,31 +65,28 @@
                 return text;
             }
 
-
+            //-------------------- Creating list to append scores to ---------------------------
             var headings = document.createElement('li');
-
             headings.appendChild(document.createTextNode("GAMER   |   SCORE"));
             list.appendChild(headings);
-             headings.className = headings.className + "scoreboardHeading";
+            headings.className = headings.className + "scoreboardHeading";
 
             gamer = document.createElement('li');
+            gamer2 = document.createElement('li');
             // var level2Score = hignscores[i].name;
 
+            gamer.appendChild(document.createTextNode(localStorage.Player_One_Initials + "____________" + localStorage.Player_One_Final_Score));
 
+            if (localStorage.Two_Player_Entered === "true") {
+                gamer2.appendChild(document.createTextNode(localStorage.Player_Two_Initials + "____________" + localStorage.Player_Two_Final_Score));
+            }
 
-            gamer.appendChild(document.createTextNode(gamerInitials + "___________" + gamerScore));
             list.appendChild(gamer);
+            list.appendChild(gamer2);
             gamer.className = gamer.className + "gamerScoreStyle";
+            gamer2.className = gamer2.className + "gamer2ScoreStyle";
 
 
-
-
-
-
-
-
-            //  for (i = 0; i < hignscores.length; i++) {--------------------------------------------
-            //alert("score " + hignscores[i].score + " Name: " + hignscores[i].name);
 
             //------------------disply High score------------------
 
@@ -148,12 +100,6 @@
 
                 hignscores.push(randomScore);
 
-
-
-
-
-
-
             }
             //sorts the score array in decending order
             hignscores.sort(function (a, b) {
@@ -166,15 +112,8 @@
                 randVar = document.createElement('li');
                 // var level2Score = hignscores[i].name;
 
-
-
                 randVar.appendChild(document.createTextNode(randomInitials() + "___________" + hignscores[i]));
                 list.appendChild(randVar);
-
-
-
-
-
             }
 
             //copy highscore array to compare gamer score to it all without adding gamer score to screen with rand initials
@@ -184,38 +123,47 @@
             //copyHignscores.push(gamerScore)
             var count = 0;
 
-
             for (var i = 0; i < hignscores.length; i++) {
-                
-
                 if (hignscores[i] > gamerScore) {
-                    console.log("hey " + count);
                     count++;
                 }
                 //if count == 3 that means there is 3 scores better than the gamers one
             }
-            
+
 
 
             var table = document.getElementById("highscoreTable");
             var row = table.insertRow(0);
             var cell1 = row.insertCell(0);
-            
+
             cell1.innerHTML = "Your Position In This Game Olympics:";
             cell1.className = cell1.className + "headingStyle";
-            
-            
+
+
             var row2 = table.insertRow(1);
             var cell2 = row2.insertCell(0);
-            
-            cell2.innerHTML = count +1; 
-            cell2.className = cell2.className + "positionStyle";
-            
-            
-            
-                
 
-            
+            cell2.innerHTML = count + 1;
+            cell2.className = cell2.className + "positionStyle";
+
+
+
+
+            //----------------------------------second player -------------------------------
+            //prompt gamer to start secod player to play and challenge their score
+            function secondPlayer() {
+                if (confirm('Start Second Player Challenge ?')) {
+                    localStorage.setItem("Two_Player_Entered", true); //setting to true to use when goes to char select
+                    location.href = 'CharacterSelect.php';
+                } else {
+                    // Do nothing!
+                }
+            }
+            if (localStorage.Two_Player_Entered === "false") {          //only prompt for second player challege if one hasnt happened already
+                setTimeout(secondPlayer, 3000);
+            }
+
+
 
 
 

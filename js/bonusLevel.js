@@ -6,7 +6,7 @@
             ASSET_MANAGER.downloadAll(init);
 
 
-            var gamelength = 3000; //seconds in game
+            var gamelength = 30; //seconds in game
             var timerID = null;
             var character = localStorage.character;                     //retrieving character selectd from local storage
             var coinAudio = new Audio('sounds/coin.mp3');               // audio that plays when coin is collected

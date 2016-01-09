@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/PreBonusLevel.php</file>
+            <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/TotalScoreSoFar2.php</file>
+            <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/TotalScoreSoFar.php</file>
             <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/Scoreboard.php</file>
-            <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/js/bonusLevel.js</file>
+            <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/js/gameOlympics.js</file>
+            <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/CharacterSelect.php</file>
+            <file>file:/C:/xampp/htdocs/javascriptGame_Ca1/js/gameOlympics_level_2.js</file>
         </group>
     </open-files>
 </project-private>

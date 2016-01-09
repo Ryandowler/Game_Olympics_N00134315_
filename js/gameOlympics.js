@@ -162,20 +162,21 @@ ball = {
 
 
         var test = gameScore;
-        //if gamer getz a point scored on them level 1 is over
+        //if gamer gets a point scored on them level 1 is over
         if (this.x + this.side < 0) {
             //add the score to local storage, to be picked up in next level
-            localStorage.setItem("score1", test);
+
+            localStorage.setItem("score1", test);   //player one score
+            console.log("g over = " +gameScore + "plus " +test);
+
             console.log("game over");
             location.href = 'TransitionToLevel2.php';
         }
 
         //if gamer score a point
         if (this.x > WIDTH) {
-
-            gameScore+=100;
+            gameScore += 100;
             console.log(gameScore);
-
         }
 
         //player scored replace the ball on the canvas

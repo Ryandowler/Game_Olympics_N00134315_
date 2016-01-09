@@ -1,0 +1,3 @@
+-2 PLayer game
+-Cheat Can be activated on Intro screen
+-Cheat Can be activated on Character selection screen (to make it fair and possible for second player to activate cheat)

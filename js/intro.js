@@ -1,6 +1,7 @@
 localStorage.clear();                                   //clear localstorage
 var audio = new Audio('sounds/start.mp3');		//sound effect for spacebar pressed
 var audio1 = new Audio('sounds/startUpMusic.mp3');	//start up music
+localStorage.setItem("Two_Player_Entered", false);                  //second player initially set to false
 
 //document.body.style.background = "#f3f3f3 url('images/introAnimation.gif')";
 window.onload = startUpMusoc;                           //on window load calls function that plays start up music
@@ -8,9 +9,6 @@ window.onload = startUpMusoc;                           //on window load calls f
 function startUpMusoc() {                               //plays start up music
     audio1.play();
 }
-
-var motion = "static";                                  //this variable is the key for changing the animation
-
 //--------------- checkKeys function-----------------
 function checkKeys(e) {
     var keyPressed = e.keyCode;
@@ -20,7 +18,6 @@ function checkKeys(e) {
         audio1.pause();                                 // if gamer presses space straight away, stop playing intro music 
         StartSound('audio1');                           //calls function that plays start sound and level 1
     }
-
     //------plays start music and delays the href by enough time to finish the sound clip-----
     function StartSound(soundobj)
     {
@@ -30,6 +27,8 @@ function checkKeys(e) {
             window.location.href = 'CharacterSelect.php';
         }, 1300);                                       //waits for animation to finish
     }
+
+
 
     //---------game Cheat <moving mouse while pressing SHIFT ALT CTRL ------------      
     window.onmousemove = function (e) {

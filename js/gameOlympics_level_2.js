@@ -51,7 +51,6 @@ function stoptimer() {
 }
 function showtime(remtime) {
     newText2.nodeValue = remtime;
-   
     if (playing) {
         if (remtime === 0) {
             stopgame();
@@ -68,12 +67,15 @@ function stopgame() {
     playing = false;
     newText2.nodeValue = 0;
     clrholes();
+
     totalAfter_level2 = totalhits + scoreRecieved;   //DDING THE SCORE FROM LEVEL 1 AND 2 TOGeher
     localStorage.setItem("score2", totalAfter_level2); //send score from lv1 and lvl2 added together
     localStorage.setItem("scoreFromLevel2", totalhits); //send score from level 2
     console.log("total after lvl2 " + totalAfter_level2);
     localStorage.setItem("score2", totalAfter_level2); //sending the score on again 
     console.log("scored in LEVEl 2  " + totalhits);
+
+
 
     //alert('Game Over.\nYour score is:  ' + totalhits + " Total " + totalAfter_level2);
     location.href = 'TotalScoreSoFar.php';
@@ -87,12 +89,11 @@ function play() {
     }
     playing = true;
     clrholes();
-    totalhits = 0; //score this level
+    totalhits = 0; //score this level initially set to 0
 
     launch();
     showtime(gamelength);
 }
-
 
 
 function launch() {
